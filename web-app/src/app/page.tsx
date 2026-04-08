@@ -2,6 +2,41 @@ import { supabase } from '@/lib/supabase';
 import { ArrowRight, ArrowRightLeft, Medal, BarChart3, TrendingUp, ChevronRight } from 'lucide-react';
 import Link from 'next/link';
 
+// Helpers
+function formatKickoff(isoString: string | null) {
+  if (!isoString) return "TBD";
+  try {
+    const date = new Date(isoString);
+    const day = date.toLocaleDateString('en-GB', { weekday: 'short' }).toUpperCase();
+    const time = date.toLocaleTimeString('en-GB', { hour: '2-digit', minute: '2-digit', hour12: false });
+    return `${day} ${time}`;
+  } catch (e) {
+    return "TBD";
+  }
+}
+
+function getAbbr(name: string | null) {
+  if (!name) return "???";
+  const mapping: Record<string, string> = {
+    "FAR Rabat": "FAR",
+    "Wydad AC": "WAC",
+    "Raja Casablanca": "RAJ",
+    "Maghreb Fez": "MAS",
+    "Olympique de Safi": "OCS",
+    "Berkane": "BER",
+    "Difaa El Jadidi": "DIF",
+    "Hassania Agadir": "HUSA",
+    "IR Tanger": "IRT",
+    "FUS Rabat": "FUS",
+    "Renaissance Zemamra": "RCAZ",
+    "Yacoub El Mansour": "YAC",
+    "Union Touarga": "UTS",
+    "COD Meknes": "CODM",
+    "Kawkab Marrakech": "KACM"
+  };
+  return mapping[name] || name.split(' ')[0].substring(0, 4).toUpperCase();
+}
+
 // Server component to fetch data
 export default async function HomePage() {
   // Try to fetch the user's squad, though it will likely be empty due to RLS without Auth.
@@ -19,6 +54,19 @@ export default async function HomePage() {
     }
   } catch (err) {
     console.error("No auth session found or missing data.", err);
+  }
+
+  // Fetch next fixture
+  let nextFixture = null;
+  try {
+    const { data } = await supabase
+      .from('next_fixture')
+      .select('*')
+      .eq('id', 1)
+      .single();
+    if (data) nextFixture = data;
+  } catch (err) {
+    console.error("Error fetching next fixture:", err);
   }
 
   // Fallback to dummy data if not authenticated/no squad yet
@@ -114,25 +162,27 @@ export default async function HomePage() {
 
         <div className="bg-[#121A2B] rounded-3xl py-6 px-4 border border-white/5 shadow-lg flex justify-around items-center">
           {/* Home Team */}
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-3 w-20">
             <div className="w-14 h-14 bg-[#1A2235] rounded-full border border-white/10 flex items-center justify-center p-2">
                <div className="w-full h-full bg-gradient-to-tr from-red-600 to-red-400 rounded-full" />
             </div>
-            <span className="text-white font-bold text-xs uppercase tracking-wider">FAR</span>
+            <span className="text-white font-bold text-xs uppercase tracking-wider text-center">{getAbbr(nextFixture?.home_team)}</span>
           </div>
 
           {/* VS info */}
           <div className="flex flex-col items-center gap-1">
             <span className="text-white font-black text-xl">VS</span>
-            <span className="text-gray-400 text-[9px] font-bold tracking-widest uppercase">Sat 14:30</span>
+            <span className="text-gray-400 text-[9px] font-bold tracking-widest uppercase">
+              {formatKickoff(nextFixture?.kickoff_time)}
+            </span>
           </div>
 
           {/* Away Team */}
-          <div className="flex flex-col items-center gap-3">
+          <div className="flex flex-col items-center gap-3 w-20">
             <div className="w-14 h-14 bg-[#1A2235] rounded-full border border-white/10 flex items-center justify-center p-2">
                <div className="w-full h-full bg-gradient-to-tr from-red-700 to-white rounded-full bg-clip-content border-2 border-red-700 border-dashed" />
             </div>
-            <span className="text-white font-bold text-xs uppercase tracking-wider">WAC</span>
+            <span className="text-white font-bold text-xs uppercase tracking-wider text-center">{getAbbr(nextFixture?.away_team)}</span>
           </div>
         </div>
       </div>
