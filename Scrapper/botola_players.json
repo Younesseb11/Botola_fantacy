@@ -1,0 +1,4992 @@
+[
+    {
+        "name": "El Khayati Ayoub",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Mesbahi Hakim",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Tagnaouti Ahmed",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Abdelhamid Yunis",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Ait Khassou Ayoub",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Ech Chamakh Jamal",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Abd Nouh",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Louadni Marouane",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Mendy Fallou",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "To Carneiro",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Bach Anas",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Derrag Zineddine",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Khfiyef Jalal Eddine",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hadraf Abdelfettah",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hrimat Mohamed",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Mbemba Nolan",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Ouarkhane Alt Khalid",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Razko Taoufik",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Silva Ricardo",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Bouriga Mouchcine",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Fahli Youssef",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hammoudan Ahmed",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Khabba Hamza",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Laura Gaetan",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Slim Reda",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Khayati Ayoub",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Tagnaouti Ahmed",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Abdelhamid Yunis",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Ech Chamakh Jamal",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Abd Nouh",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Louadni Marouane",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Mendy Fallou",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "To Carneiro",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Bach Anas",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Derrag Zineddine",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Khfiyef Jalal Eddine",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hadraf Abdelfettah",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hrimat Mohamed",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Mbemba Nolan",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Ouarkhane Alt Khalid",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Razko Taoufik",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Silva Ricardo",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Bouriga Mouchcine",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Fahli Youssef",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hammoudan Ahmed",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Khabba Hamza",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Slim Reda",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Cherqaoui Marouane",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Khayati Ayoub",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Mesbahi Hakim",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Tagnaouti Ahmed",
+        "position": "GK",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Abdelhamid Yunis",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Ait Khassou Ayoub",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Ech Chamakh Jamal",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Abd Nouh",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Louadni Marouane",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Mendy Fallou",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "To Carneiro",
+        "position": "DEF",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Bach Anas",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Derrag Zineddine",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Khfiyef Jalal Eddine",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hadraf Abdelfettah",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hrimat Mohamed",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Mbemba Nolan",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Ouarkhane Alt Khalid",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Razko Taoufik",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Silva Ricardo",
+        "position": "MID",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Bouriga Mouchcine",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "El Fahli Youssef",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Hammoudan Ahmed",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Khabba Hamza",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Laura Gaetan",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Slim Reda",
+        "position": "FWD",
+        "team": "FAR Rabat"
+    },
+    {
+        "name": "Chihab Salaheddine",
+        "position": "GK",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Ait Allal Hamza",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Chabani Aymen",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "El Jabali Driss",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Ghedamsi Salah",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Khorsa Saad",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Rhaili Adil",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Brija El Habib",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Brika Adam",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Hamadi Zakaria",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Hamza Afsal",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Harmach Achraf",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Noureddine Oussama",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Oudrhiri Amine",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Ouhrou Marouane",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Seakanyeng Kabelo",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Tahiri Anas",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Allouch Soulyman",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Baba Khalid",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Benjdida Soufiane",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Dalouzi Youssef",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Yamga Kevin",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Chihab Salaheddine",
+        "position": "GK",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Errahmany Oussama",
+        "position": "GK",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Ait Allal Hamza",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Chabani Aymen",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "El Jabali Driss",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Ghedamsi Salah",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Khorsa Saad",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Rhaili Adil",
+        "position": "DEF",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Brija El Habib",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Brika Adam",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Hamadi Zakaria",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Hamza Afsal",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Harmach Achraf",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Noureddine Oussama",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Oudrhiri Amine",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Ouhrou Marouane",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Seakanyeng Kabelo",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Tahiri Anas",
+        "position": "MID",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Allouch Soulyman",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Baba Khalid",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Benjdida Soufiane",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Dalouzi Youssef",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Semega Cheikhna",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "Yamga Kevin",
+        "position": "FWD",
+        "team": "Maghreb Fez"
+    },
+    {
+        "name": "El Motie Youssef",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Hamiani Hamza",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Kernane Abderrahmane",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Atik Walid",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ezzine Yasser",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ferhani Houari",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Kordani Yassine",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Semmoumy Hamza",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Serbout Imad",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Chemlal Mohamed",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Bouchqali Soulaimane",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Houari Ahmed",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Morsli Saad",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Moudane Sofian",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Errahouli Salaheddine",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Karmoune Faraji",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Mkhair Anas",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Najari Youness",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ngoma Fred",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Soufeir Anas",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Eddaou Anass",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Elaz Marwane",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Fadil Mohammed",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Habbassi Achref",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Khannouss Imad",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Kone Moussa",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Samoudi Anas",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Motie Youssef",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Hamiani Hamza",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Atik Walid",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ezzine Yasser",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ferhani Houari",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Kordani Yassine",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Semmoumy Hamza",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Serbout Imad",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Chemlal Mohamed",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Bouchqali Soulaimane",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Houari Ahmed",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Morsli Saad",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Moudane Sofian",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Errahouli Salaheddine",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Karmoune Faraji",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Mkhair Anas",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Najari Youness",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ngoma Fred",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Soufeir Anas",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Eddaou Anass",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Elaz Marwane",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Khannouss Imad",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Kone Moussa",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Askar Imad",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Motie Youssef",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Hamiani Hamza",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Kernane Abderrahmane",
+        "position": "GK",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Atik Walid",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ezzine Yasser",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ferhani Houari",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Kordani Yassine",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Semmoumy Hamza",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Serbout Imad",
+        "position": "DEF",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Chemlal Mohamed",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Bouchqali Soulaimane",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Houari Ahmed",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Morsli Saad",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "El Moudane Sofian",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Errahouli Salaheddine",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ichou Oussama",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Karmoune Faraji",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Mkhair Anas",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Najari Youness",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ngoma Fred",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Ouhatti Ayman",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Samoudi Marouane",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Soufeir Anas",
+        "position": "MID",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Eddaou Anass",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Elaz Marwane",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Fadil Mohammed",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Habbassi Achref",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Khannouss Imad",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Kone Moussa",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Samoudi Anas",
+        "position": "FWD",
+        "team": "Olympique de Safi"
+    },
+    {
+        "name": "Benabid El Mehdi",
+        "position": "GK",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Aboulfath Amine",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Boucheta Ayoub",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Bouchouari Mohamed",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "El Jadidi Mohammed",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "El Wafi Ayman",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Elowasti Hamza",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ferreira Guilherme",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Lamirat Abdelghafour",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Meijers Bart",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Moufid Mohamed",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Moussaddaq Salah",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Bakasu Joseph",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Byar Naim",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Khali Nabil",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Mahtou Rayane",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Sabbar Walid",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Vaca Ramiro",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ziyech Hakim",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Amrabat Nordin",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ben Yedder Wissam",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "El Moutaraji Zouheir",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Hannouri Hamza",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Nassi Walid",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Orebonye Tumisang",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Paniagua Moises",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Rayhi Mohamed",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Benabid El Mehdi",
+        "position": "GK",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Mhamdi Abdelali",
+        "position": "GK",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Aboulfath Amine",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Boucheta Ayoub",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Bouchouari Mohamed",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "El Wafi Ayman",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Elowasti Hamza",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ferreira Guilherme",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Lamirat Abdelghafour",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Meijers Bart",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Moufid Mohamed",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Moussaddaq Salah",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Bakasu Joseph",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Byar Naim",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Sabbar Walid",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Vaca Ramiro",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ziyech Hakim",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Amrabat Nordin",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ben Yedder Wissam",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Hannouri Hamza",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Nassi Walid",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Orebonye Tumisang",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Paniagua Moises",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Rayhi Mohamed",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Benabid El Mehdi",
+        "position": "GK",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Mhamdi Abdelali",
+        "position": "GK",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Aboulfath Amine",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Boucheta Ayoub",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Bouchouari Mohamed",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "El Jadidi Mohammed",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "El Wafi Ayman",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Elowasti Hamza",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ferreira Guilherme",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Lamirat Abdelghafour",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Meijers Bart",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Moufid Mohamed",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Moussaddaq Salah",
+        "position": "DEF",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Bakasu Joseph",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Byar Naim",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Khali Nabil",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Mahtou Rayane",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Sabbar Walid",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Sakhi Hamza",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Vaca Ramiro",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ziyech Hakim",
+        "position": "MID",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Amrabat Nordin",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Ben Yedder Wissam",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "El Moutaraji Zouheir",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Hannouri Hamza",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Nassi Walid",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Orebonye Tumisang",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Paniagua Moises",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Rayhi Mohamed",
+        "position": "FWD",
+        "team": "Wydad AC"
+    },
+    {
+        "name": "Id Said Hafid",
+        "position": "GK",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Idar Mohamed",
+        "position": "GK",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Aboujemaa Ameur",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Ait Brayem Hicham",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Boughaz Yassine",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Doumbia Ibrahim",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Keita Cheick",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Khafi Younes",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Soubai Ismail",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Adjar Mohammed",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Amzili Brahim",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Bennadi Ayoub",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "El Gouj Mounir",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "El Khafi Ayoub",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Fahmi Youssef",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Hamdi Mohamed",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Janan Allah Hamza",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Oubidar Redouane",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Ouddah Omar",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Raiss Khalid",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Saoud Hamza",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Abardi Reda",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Abba Mohssine",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Aghou Amine",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Ait Hamou Ibrahim",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Habbali Mohamed",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Jabrane Yassine",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Jazouli Soufiane",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "El Koutouby Tarik",
+        "position": "GK",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Id Said Hafid",
+        "position": "GK",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Idar Mohamed",
+        "position": "GK",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Aboujemaa Ameur",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Ait Brayem Hicham",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Boughaz Yassine",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Doumbia Ibrahim",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Keita Cheick",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Khafi Younes",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Soubai Ismail",
+        "position": "DEF",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Adjar Mohammed",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Amzili Brahim",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Bennadi Ayoub",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "El Gouj Mounir",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "El Khafi Ayoub",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Fahmi Youssef",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Hamdi Mohamed",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Janan Allah Hamza",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Oubidar Redouane",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Ouddah Omar",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Raiss Khalid",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Saoud Hamza",
+        "position": "MID",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Abardi Reda",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Abba Mohssine",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Aghou Amine",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Ait Hamou Ibrahim",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Habbali Mohamed",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Jabrane Yassine",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Jazouli Soufiane",
+        "position": "FWD",
+        "team": "Dcheira"
+    },
+    {
+        "name": "Maftah Mehdi",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Munir",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Zniti Anas",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Assal Abdelhak",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Boukhriss Et Tayeb",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Maswab Amine",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Moussaoui Hamza",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Haddadi Oussama",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Kandouss Ismael",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Manaout Haytam",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Sadil Mohamed",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Handouz Mohammed",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Khairi Ayoub",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Machach Zinedine",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Riahi Imad",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Sidibe Soumaila",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Aabid Rayane",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Azri Amine",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Bassene Paul",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Chouiar Mounir",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Kaabi Youness",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Morabit Mohamed",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Hajji Reda",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Labhiri Yassine",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Lamlioui Oussama",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Mehri Youssef",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Maftah Mehdi",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Munir",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Zniti Anas",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Assal Abdelhak",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Boukhriss Et Tayeb",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Moussaoui Hamza",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Haddadi Oussama",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Kandouss Ismael",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Manaout Haytam",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Sadil Mohamed",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Khairi Ayoub",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Machach Zinedine",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Riahi Imad",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Sidibe Soumaila",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Aabid Rayane",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Azri Amine",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Bassene Paul",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Chouiar Mounir",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Kaabi Youness",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Morabit Mohamed",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Hajji Reda",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Labhiri Yassine",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Lamlioui Oussama",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Mehri Youssef",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Bilal Kamal",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Maftah Mehdi",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Munir",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Zniti Anas",
+        "position": "GK",
+        "team": "Berkane"
+    },
+    {
+        "name": "Assal Abdelhak",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Boukhriss Et Tayeb",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Maswab Amine",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Moussaoui Hamza",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Haddadi Oussama",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Kandouss Ismael",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Manaout Haytam",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "Sadil Mohamed",
+        "position": "DEF",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Handouz Mohammed",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Khairi Ayoub",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Machach Zinedine",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Ouyahia Mohamed",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Riahi Imad",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Sidibe Soumaila",
+        "position": "MID",
+        "team": "Berkane"
+    },
+    {
+        "name": "Aabid Rayane",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Azri Amine",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Bassene Paul",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Chouiar Mounir",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Kaabi Youness",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "El Morabit Mohamed",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Hajji Reda",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Labhiri Yassine",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Lamlioui Oussama",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Mehri Youssef",
+        "position": "FWD",
+        "team": "Berkane"
+    },
+    {
+        "name": "Niasse Babacar",
+        "position": "GK",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Abaaziz Soufiane",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Benchchaoui Oussama",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Bentarcha Mohamed",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Fatine Yassine",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Lemzaouri Marouane",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Malki Hamza",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Oubraim Zakaria",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Sanogo Abdoulaye",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "El Hacen Moctar",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "El Idrissi Bouzidi Brahim",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "El Khafi Ayoub",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Hilali Mohamed",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Michte Youssef",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Mouchtanim Mouad",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Da Costa Romuald",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Diallo Pape",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Ennakouss Abderrazak",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Idrissi Achraf",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Lamine Yassine",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Sabik Imad",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Ziani Abdellah",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Ait Wahmane Ayoub",
+        "position": "GK",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Bessak Marouane",
+        "position": "GK",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Niasse Babacar",
+        "position": "GK",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Abaaziz Soufiane",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Benchchaoui Oussama",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Bentarcha Mohamed",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Fatine Yassine",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Lemzaouri Marouane",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Malki Hamza",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Oubraim Zakaria",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Sanogo Abdoulaye",
+        "position": "DEF",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "El Hacen Moctar",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "El Idrissi Bouzidi Brahim",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "El Khafi Ayoub",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Hilali Mohamed",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Michte Youssef",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Mouchtanim Mouad",
+        "position": "MID",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Da Costa Romuald",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Diallo Pape",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Ennakouss Abderrazak",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Idrissi Achraf",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Lamine Yassine",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Sabik Imad",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Ziani Abdellah",
+        "position": "FWD",
+        "team": "Difaa El Jadidi"
+    },
+    {
+        "name": "Abyir Badreddine",
+        "position": "GK",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "El Majhad Hisham",
+        "position": "GK",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ami Zakaria",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Arbidi Youssef",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Bahsain Moud",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Beye Assane",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Cabral Euclides",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "El Amali Youness",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "El Amrani Soulaiman",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Hrila Ismail",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Lamgahez Zakary",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ouammou Nassim",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Sahnoune Ayoub",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ait Brayim Abdelali",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Akoumi Mehdi",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Amkadmi Ayoub Yousfi",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Boukhanfer Abdallah",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Dembi Fred Jose",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Katiba Mohamed",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Kossi Rodrigue",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Qassaq Abderrahmane",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Tachtach Jalal",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Tarrazi Ayman",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Zouagui Anis",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ahadad Hamid",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Bakhkhach Mohamed",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Bello Ilou Baba",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Bendahmane Fahd",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Jarmouni Walid",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Kaidi Aziz",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ounajem Mohammed",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Plumain Ange-Freddy",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Abyir Badreddine",
+        "position": "GK",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Antara Hamza",
+        "position": "GK",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "El Majhad Hisham",
+        "position": "GK",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Motik Ilyass",
+        "position": "GK",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ami Zakaria",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Arbidi Youssef",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Bahsain Moud",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Beye Assane",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Cabral Euclides",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "El Amali Youness",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "El Amrani Soulaiman",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Hrila Ismail",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Lamgahez Zakary",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ouammou Nassim",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Sahnoune Ayoub",
+        "position": "DEF",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ait Brayim Abdelali",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Akoumi Mehdi",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Amkadmi Ayoub Yousfi",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Boukhanfer Abdallah",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Dembi Fred Jose",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Katiba Mohamed",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Kossi Rodrigue",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Qassaq Abderrahmane",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Tachtach Jalal",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Tarrazi Ayman",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Zouagui Anis",
+        "position": "MID",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ahadad Hamid",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Bakhkhach Mohamed",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Bello Ilou Baba",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Bendahmane Fahd",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Jarmouni Walid",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Kaidi Aziz",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Ounajem Mohammed",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "Plumain Ange-Freddy",
+        "position": "FWD",
+        "team": "Hassania Agadir"
+    },
+    {
+        "name": "El Ouaad Amine",
+        "position": "GK",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Laghzal Youssef",
+        "position": "GK",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Al Aiz Oussama",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Moussaoui Louay",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Ouadghiri Bilal",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Wahabi Akram",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Gaddarine Badr",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Kiani Zakaria",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Lamrabat Anass",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Saoud Mohamed",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Abdoul Mutalib Faouzi",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Chentouf Ahmed",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Darazi Adam",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Arouch Mohamed",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Bellali Ennaama",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Moudene Hamza",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Maali Abdel",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Sanogo Siriki",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Tali Akram",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Bakkali Zakaria",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Chninak Nawfal",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Bahja Haytham",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Gaye Papa",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Ghabra Jawad",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Kote Moussa",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Kpolo Livty",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Lagrouch Karim",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Rhabra Jawad",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Saint-Louis Dylan",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Azmi Ahmed",
+        "position": "GK",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Barcola Malcolm",
+        "position": "GK",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Ouaad Amine",
+        "position": "GK",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Hachloufi Yassine",
+        "position": "GK",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Laghzal Youssef",
+        "position": "GK",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Al Aiz Oussama",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Moussaoui Louay",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Ouadghiri Bilal",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Wahabi Akram",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Gaddarine Badr",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Karouat Saad",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Kiani Zakaria",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Lamrabat Anass",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Saoud Mohamed",
+        "position": "DEF",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Abdoul Mutalib Faouzi",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Chentouf Ahmed",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Darazi Adam",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Arouch Mohamed",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Bellali Ennaama",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Moudene Hamza",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Quaraoui Achraf",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Maali Abdel",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Sanogo Siriki",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Tali Akram",
+        "position": "MID",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Bakkali Zakaria",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Chninak Nawfal",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "El Bahja Haytham",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Gaye Papa",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Ghabra Jawad",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Kote Moussa",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Kpolo Livty",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Lagrouch Karim",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Rhabra Jawad",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Saint-Louis Dylan",
+        "position": "FWD",
+        "team": "IR Tanger"
+    },
+    {
+        "name": "Benrhozil Taha",
+        "position": "GK",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Ghanimi Rachid",
+        "position": "GK",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Lakred Ayoub",
+        "position": "GK",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Amhih Yassine",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Amri Moncef",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Chamboco",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Mahssani Hodifa",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Farhane Amine",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Lemsen Amine",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Raoui Oussama",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Soukhane Oussama",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Cofi Salaheddine",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Harrak Ali",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Msane Amine",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Jamaane Houdaifa",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Mahir Abdessamad",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Moujahid Hamza",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Moutaraji Ismail",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Serrhat Anas",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Souane Amine",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Bassinga Deo",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Benyachou Salaheddine",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Diakite Lamine",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Faidi Chouaib",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Gitego Arthur",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Mouloua Ayoub",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Tazi Soufiane",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Benrhozil Taha",
+        "position": "GK",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Ghanimi Rachid",
+        "position": "GK",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Lakred Ayoub",
+        "position": "GK",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Amhih Yassine",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Amri Moncef",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Chamboco",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Hani Walid",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Mahssani Hodifa",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Makkaoui Anas",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Farhane Amine",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Lemsen Amine",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Raoui Oussama",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Soukhane Oussama",
+        "position": "DEF",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Cofi Salaheddine",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Harrak Ali",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Msane Amine",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Jamaane Houdaifa",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Mahir Abdessamad",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Moujahid Hamza",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Moutaraji Ismail",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Serrhat Anas",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Souane Amine",
+        "position": "MID",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Bassinga Deo",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Benyachou Salaheddine",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Diakite Lamine",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Diallo Moctar",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Faidi Chouaib",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Gitego Arthur",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Mouloua Ayoub",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "Tazi Soufiane",
+        "position": "FWD",
+        "team": "FUS Rabat"
+    },
+    {
+        "name": "El Jourbaoui Mehdi",
+        "position": "GK",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Fakhr Marouane",
+        "position": "GK",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Ferni Mohamed",
+        "position": "GK",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Ait Boughima Reda",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Ajako James",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Badaoui Abdessamad",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Balich Amine",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Diallo Ousmane",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Hachemi Zouheir",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Madkour Abdelilah",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Soufi Bilal",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Tine Ayoub",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Zidani Ishak",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Chichane Moustapha",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Bajjani Abdellatif",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Fakih Mohamed",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Ghanouj Anass",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Lahtimi Montasser",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Moutaouali Mohsine",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Radouani Mohamed",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Tahiri Mohamed Naoufal",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Akaba Salim",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Bahrou Zakaria",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Hamzaoui Abdelaziz",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Faffa Yazid",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Farah Abdellah",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Fatihi Zakaria",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Kamal Mohamed",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Oujeddou Marouane",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Jourbaoui Mehdi",
+        "position": "GK",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Fakhr Marouane",
+        "position": "GK",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Ferni Mohamed",
+        "position": "GK",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Abdourahmane Mohamed",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Ait Boughima Reda",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Ajako James",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Badaoui Abdessamad",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Bahi Salaheddine",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Balich Amine",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Diallo Ousmane",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Hachemi Zouheir",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Hadhoudi Marouane",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Madkour Abdelilah",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Soufi Bilal",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Tine Ayoub",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Zidani Ishak",
+        "position": "DEF",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Aboubacar Camara",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Chichane Moustapha",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Bajjani Abdellatif",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Fakih Mohamed",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Ghanouj Anass",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Lahtimi Montasser",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Moutaouali Mohsine",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Radouani Mohamed",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Tahiri Mohamed Naoufal",
+        "position": "MID",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Akaba Salim",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Bahrou Zakaria",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "El Hamzaoui Abdelaziz",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Faffa Yazid",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Farah Abdellah",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Fatihi Zakaria",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Ghailan Zacarias",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Kamal Mohamed",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Oujeddou Marouane",
+        "position": "FWD",
+        "team": "Renaissance Zemamra"
+    },
+    {
+        "name": "Al Harrar El Mehdi",
+        "position": "GK",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Baadi Abdelkarim",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Benoun Badr",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Boulacsout Mohamed",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "El Amloud Ayoub",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Khafifi Abdellah",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Khammas Amine",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Mchakhchekh Mehdi",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Mokadem Ismail",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Al Makahasi Mohamed",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Barkok Aymen",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Bougrine Sabir",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Chraibi Othmane",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Conte Balla",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Ennaffati Adam",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Ferdaoussi Hilal",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Halimi Besar",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Shararh",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Dahak Mouad",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Iguiz Yahya",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Khafi Ismail",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Maamouri Ayoub",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Oyewusi Mathias",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Sakho Pape",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Al Harrar El Mehdi",
+        "position": "GK",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Alaoui Kbiri",
+        "position": "GK",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Baadi Abdelkarim",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Benoun Badr",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Boulacsout Mohamed",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "El Amloud Ayoub",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Khafifi Abdellah",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Khammas Amine",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Mchakhchekh Mehdi",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Mokadem Ismail",
+        "position": "DEF",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Al Makahasi Mohamed",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Barkok Aymen",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Bougrine Sabir",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Chraibi Othmane",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Conte Balla",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Ennaffati Adam",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Ferdaoussi Hilal",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Halimi Besar",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Shararh",
+        "position": "MID",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Dahak Mouad",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Iguiz Yahya",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Khafi Ismail",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Maamouri Ayoub",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Oyewusi Mathias",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Sakho Pape",
+        "position": "FWD",
+        "team": "Raja Casablanca"
+    },
+    {
+        "name": "Doughmi Hassan",
+        "position": "GK",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Kasbi Hafs",
+        "position": "GK",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Sayad Ismail",
+        "position": "GK",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Azzoubairi Nassim",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Khouch Abdelali",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Marour Zouhair",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Morsil Yassine",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Nasserallah Mohamed",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Zine Achraf",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Ahayaoui Mohamed",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Ajoughlal Zakaria",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Badri Ilyass",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "El Bouadli Ayoub",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "El Kaaba Fahd",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Khalloufi Adil",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Kharjan Moad",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Legnibi Youssef",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Mrabet Hatim",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Nassik Saad",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Noussir Youness",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Ahannach Soufyan",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Balouk Mehdi",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Boussanane Mouhcine",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Boussefiane Hicham",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "El Badoui Mohamed",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Fati Zakaria",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Jabroun Anas",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Mansouri Brahim",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Doughmi Hassan",
+        "position": "GK",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Kasbi Hafs",
+        "position": "GK",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Sayad Ismail",
+        "position": "GK",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Azzoubairi Nassim",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Khouch Abdelali",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Marour Zouhair",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Morsil Yassine",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Nasserallah Mohamed",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Zine Achraf",
+        "position": "DEF",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Ahayaoui Mohamed",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Ajoughlal Zakaria",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Badri Ilyass",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "El Bouadli Ayoub",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "El Kaaba Fahd",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Khalloufi Adil",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Kharjan Moad",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Legnibi Youssef",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Mrabet Hatim",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Nassik Saad",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Noussir Youness",
+        "position": "MID",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Ahannach Soufyan",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Balouk Mehdi",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Boussanane Mouhcine",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Boussefiane Hicham",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "El Badoui Mohamed",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Fati Zakaria",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Jabroun Anas",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Mansouri Brahim",
+        "position": "FWD",
+        "team": "Yacoub El Mansour"
+    },
+    {
+        "name": "Asmama Reda",
+        "position": "GK",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Bouelainine Houssam",
+        "position": "GK",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Houasli Abderahmane",
+        "position": "GK",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Akharraz Youness",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Ashabi Mehdi",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Bousqal Hamza",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Khalej Tahar",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Khalej Yassine",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Kajai Youssef",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Majni Taha",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Nanah Anas",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Regragui Hamza",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Zahouani Fouad",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Arjoune Omar",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Danny",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Es Sahel Mohamed",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Essahel Mohammed",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Forsy Abdelhay",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Hmad Mohammed",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Kasbi Khalid",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Rhailouf Walid",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Zamrat Souhayl",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Aboulfath Ahmed",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Aiada Zakaria",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Ait Lamkadem Redouan",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Bammou Yacine",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Dahmani Younes",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Bahraoui Brahim",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Ouadi Abdelkabir",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Essadak Hossam",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Fouzair Mohammed",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Ghazzani Salim",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Housni Zoubir",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Lotfi Saad",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Moustaghfir Nacer",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Zraa Yassine",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Asmama Reda",
+        "position": "GK",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Bouelainine Houssam",
+        "position": "GK",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Houasli Abderahmane",
+        "position": "GK",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Hasbi Walid",
+        "position": "GK",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Akharraz Youness",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Ashabi Mehdi",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Bousqal Hamza",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Khalej Tahar",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Khalej Yassine",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Kajai Youssef",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Majni Taha",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Nanah Anas",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Regragui Hamza",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Zahouani Fouad",
+        "position": "DEF",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Arjoune Omar",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Danny",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Es Sahel Mohamed",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Essahel Mohammed",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Forsy Abdelhay",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Hmad Mohammed",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Kasbi Khalid",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Rhailouf Walid",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Zamrat Souhayl",
+        "position": "MID",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Aboulfath Ahmed",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Aiada Zakaria",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Ait Lamkadem Redouan",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Bammou Yacine",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Dahmani Younes",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Bahraoui Brahim",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "El Ouadi Abdelkabir",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Essadak Hossam",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Fouzair Mohammed",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Ghazzani Salim",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Housni Zoubir",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Lotfi Saad",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Moustaghfir Nacer",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Zraa Yassine",
+        "position": "FWD",
+        "team": "Union Touarga"
+    },
+    {
+        "name": "Bounaga Reda",
+        "position": "GK",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Majid Aymane",
+        "position": "GK",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Taher Soufiane",
+        "position": "GK",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Chemseddine Knaidil",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "El Abdi Driss",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "El Bounagate Karim",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Lourhraz Ayoub",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Nouader Anass",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Anouar Youssouf",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Benktib Ismael",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Berdad Adnane",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Daoui Oussama",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Dghoughi Amine",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "El Id Yacoub",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Gharmal Mohamed",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Goulouss Mouad",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Hmaidou Achraf",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "L'Koucha Karim",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Lakhlifi Ayoub",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Naji Larbi",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Zinaf Mohamed",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Aounzou Mouad",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Benkassou Abdellatif",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Eddib Zouhir",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Enzo Mouad",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Msahli Oussama",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Sahd Mustapha",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Sakhi Younes",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Bounaga Reda",
+        "position": "GK",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Majid Aymane",
+        "position": "GK",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Taher Soufiane",
+        "position": "GK",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Chemseddine Knaidil",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "El Abdi Driss",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "El Bounagate Karim",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Lourhraz Ayoub",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Nouader Anass",
+        "position": "DEF",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Anouar Youssouf",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Benktib Ismael",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Berdad Adnane",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Daoui Oussama",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Dghoughi Amine",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "El Id Yacoub",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Gharmal Mohamed",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Goulouss Mouad",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Hmaidou Achraf",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "L'Koucha Karim",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Lakhlifi Ayoub",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Naji Larbi",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Zinaf Mohamed",
+        "position": "MID",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Aounzou Mouad",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Benkassou Abdellatif",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Eddib Zouhir",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Enzo Mouad",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Msahli Oussama",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Sahd Mustapha",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Sakhi Younes",
+        "position": "FWD",
+        "team": "COD Meknes"
+    },
+    {
+        "name": "Ait Oubna Naoufal",
+        "position": "GK",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Jemjami Mohamed",
+        "position": "GK",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Anrar Soulaimane",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Benhita Mohamed Adam",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "El Alami Ismail",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "El Hamdaoui Akram",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Elabdi Mohamed",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Fassoukh Hamza",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Mennioui Redouane",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Omurwa Johnstone",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Dahmani Habib Allah",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Gnolou Claude",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Mahrous Oussama",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Rafa Hamza",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Raiani Youssef",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Smaali Hamza",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Tamrani Khalil",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Boutaib Khalid",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Cisse Souleymane",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "El Bahraoui Younes",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "El Janati Hamza",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Essallami Saleh",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Haffari Oussama",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Lougmani Nadir",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Mihrab Ismail",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Zghoudi Youssef",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Ait Oubna Naoufal",
+        "position": "GK",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Baayou Mohamed",
+        "position": "GK",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Jemjami Mohamed",
+        "position": "GK",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Anrar Soulaimane",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Benhita Mohamed Adam",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "El Alami Ismail",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "El Hamdaoui Akram",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Elabdi Mohamed",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Fassoukh Hamza",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Mennioui Redouane",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Omurwa Johnstone",
+        "position": "DEF",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Dahmani Habib Allah",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Gnolou Claude",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Hafidi Abdelilah",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Mahrous Oussama",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Rafa Hamza",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Raiani Youssef",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Smaali Hamza",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Tamrani Khalil",
+        "position": "MID",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Boutaib Khalid",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Cisse Souleymane",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "El Bahraoui Younes",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "El Janati Hamza",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Essallami Saleh",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Haffari Oussama",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Lougmani Nadir",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Mihrab Ismail",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    },
+    {
+        "name": "Zghoudi Youssef",
+        "position": "FWD",
+        "team": "Kawkab Marrakech"
+    }
+]
