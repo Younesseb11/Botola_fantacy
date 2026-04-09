@@ -63,17 +63,17 @@ CREATE INDEX IF NOT EXISTS fixtures_home_team_idx   ON public.fixtures(home_team
 CREATE INDEX IF NOT EXISTS fixtures_away_team_idx   ON public.fixtures(away_team_id);
 CREATE INDEX IF NOT EXISTS fixtures_match_date_idx  ON public.fixtures(match_date);
 
--- Also backfill the optional match_id on live_events
--- (run AFTER live_events table already exists)
+-- Also backfill the optional match_id on player_live_points
+-- (run AFTER player_live_points table already exists)
 DO $$
 BEGIN
   IF NOT EXISTS (
     SELECT 1 FROM information_schema.columns
     WHERE table_schema = 'public'
-      AND table_name   = 'live_events'
+      AND table_name   = 'player_live_points'
       AND column_name  = 'fixture_id'
   ) THEN
-    ALTER TABLE public.live_events
+    ALTER TABLE public.player_live_points
       ADD COLUMN fixture_id UUID REFERENCES public.fixtures(id) ON DELETE SET NULL;
   END IF;
 END $$;
@@ -189,8 +189,13 @@ BEGIN
 
   -- updated_at (needed for the trigger)
   IF NOT EXISTS (SELECT 1 FROM information_schema.columns
-    WHERE table_schema='public' AND table_name='user_squads' AND column_name='updated_at') THEN
+    WHERE table_schema = 'public' AND table_name = 'user_squads' AND column_name = 'updated_at') THEN
     ALTER TABLE public.user_squads ADD COLUMN updated_at TIMESTAMPTZ NOT NULL DEFAULT NOW();
+  END IF;
+
+  -- unique constraint for upserts
+  IF NOT EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'user_squads_user_id_gameweek_key') THEN
+    ALTER TABLE public.user_squads ADD CONSTRAINT user_squads_user_id_gameweek_key UNIQUE (user_id, gameweek);
   END IF;
 END $$;
 

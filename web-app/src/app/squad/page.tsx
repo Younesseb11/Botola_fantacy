@@ -1,14 +1,34 @@
 "use client";
 
-import { useEffect, useState } from "react";
-import { ArrowLeftRight, User, Search, Filter, Loader2 } from "lucide-react";
+import { useEffect, useState, useMemo } from "react";
+import { 
+  Plus, Trash2, Coins, Users, ChevronUp, ChevronDown, 
+  AlertCircle, CheckCircle2, Loader2, Shield 
+} from "lucide-react";
 import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { supabase } from "@/lib/supabase";
+import { 
+  getGameweekStatus, 
+  saveInitialSquad, 
+  fetchUserSquad, 
+  updateSquadArrangement,
+  type SquadStatus
+} from "./actions";
+import { PitchView } from "@/components/PitchView";
 
 function cn(...inputs: ClassValue[]) {
   return twMerge(clsx(inputs));
 }
+
+// Configuration
+const BUDGET_TOTAL = 100.0;
+const LIMITS: Record<string, number> = {
+  GK: 2,
+  DEF: 5,
+  MID: 5,
+  FWD: 3
+};
 
 interface Player {
   id: string;
@@ -25,188 +45,335 @@ interface Team {
 }
 
 export default function SquadPage() {
+  // Data State
   const [players, setPlayers] = useState<Player[]>([]);
   const [teamMap, setTeamMap] = useState<Record<string, string>>({});
   const [loading, setLoading] = useState(true);
+  const [saving, setSaving] = useState(false);
+
+  // Persistence State
+  const [squadStatus, setSquadStatus] = useState<SquadStatus | null>(null);
+  const [persistedSquad, setPersistedSquad] = useState<any>(null);
+
+  // Draft/UI State
+  const [draft, setDraft] = useState<Player[]>([]);
+  const [currentTab, setCurrentTab] = useState<"market" | "draft" | "pitch">("market");
   const [searchTerm, setSearchTerm] = useState("");
+  const [posFilter, setPosFilter] = useState<string>("ALL");
+  const [sortDir, setSortDir] = useState<"desc" | "asc">("desc");
+
+  // Feedback State
+  const [error, setError] = useState<string | null>(null);
+  const [success, setSuccess] = useState<string | null>(null);
 
   useEffect(() => {
-    async function fetchData() {
+    async function init() {
       try {
         setLoading(true);
         
-        // 1. Fetch Teams for mapping
+        // 1. Fetch metadata
         const { data: teamsData } = await supabase.from("teams").select("id, name, short_name");
         const mapping: Record<string, string> = {};
-        teamsData?.forEach((t: Team) => {
-          mapping[t.id] = t.short_name;
-        });
+        teamsData?.forEach((t: Team) => { mapping[t.id] = t.short_name; });
         setTeamMap(mapping);
 
-        // 2. Fetch Players
-        const { data: playersData } = await supabase
-          .from("players")
-          .select("id, name, team_id, position, price")
-          .order("price", { ascending: false });
-        
+        const { data: playersData } = await supabase.from("players").select("id, name, team_id, position, price");
         if (playersData) setPlayers(playersData);
+
+        // 2. Auth & Squad Check
+        const status = await getGameweekStatus();
+        setSquadStatus(status);
+
+        const squad = await fetchUserSquad();
+        if (squad) {
+          setPersistedSquad(squad);
+          setCurrentTab("pitch"); // Show team if already drafted
+        }
       } catch (err) {
-        console.error("Error fetching squad data:", err);
+        console.error("Initialization error:", err);
       } finally {
         setLoading(false);
       }
     }
-
-    fetchData();
+    init();
   }, []);
 
-  const filteredPlayers = players.filter(p => 
-    p.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-    p.position.toLowerCase().includes(searchTerm.toLowerCase())
-  );
+  // Derived State
+  const spent = useMemo(() => draft.reduce((acc, p) => acc + p.price, 0), [draft]);
+  const remainingBudget = Number((BUDGET_TOTAL - spent).toFixed(1));
+  
+  const counts = useMemo(() => {
+    const c: Record<string, number> = { GK: 0, DEF: 0, MID: 0, FWD: 0 };
+    draft.forEach(p => { c[p.position]++; });
+    return c;
+  }, [draft]);
 
-  // Split into positions for the pitch (Empty for now until we build selection logic)
-  const fwd: any[] = [];
-  const mid: any[] = [];
-  const def: any[] = [];
-  const gk: any[] = [];
+  const filteredPlayers = useMemo(() => {
+    return players
+      .filter(p => {
+        const matchesSearch = p.name.toLowerCase().includes(searchTerm.toLowerCase());
+        const matchesPos = posFilter === "ALL" || p.position === posFilter;
+        return matchesSearch && matchesPos;
+      })
+      .sort((a, b) => sortDir === "desc" ? b.price - a.price : a.price - b.price);
+  }, [players, searchTerm, posFilter, sortDir]);
 
-  const renderRow = (players: any[]) => (
-    <div className="flex justify-center items-center gap-1 sm:gap-3 w-full min-h-[80px]">
-      {players.length > 0 ? (
-        players.map((p) => <PlayerCard key={p.id} player={p} />)
-      ) : (
-        <div className="w-14 h-14 rounded-full border-2 border-dashed border-white/10 flex items-center justify-center">
-          <User className="text-white/5" size={24} />
-        </div>
-      )}
-    </div>
-  );
+  // Logic
+  const addPlayer = (player: Player) => {
+    if (draft.find(p => p.id === player.id)) return showError("Already in draft!");
+    if (remainingBudget < player.price) return showError("Insufficient budget!");
+    if (counts[player.position] >= LIMITS[player.position]) return showError(`${player.position} limit reached!`);
+    if (draft.length >= 15) return showError("Draft is full!");
+
+    setDraft([...draft, player]);
+  };
+
+  const removePlayer = (playerId: string) => {
+    setDraft(draft.filter(p => p.id !== playerId));
+  };
+
+  const handleConfirmSquad = async () => {
+    if (draft.length < 15) return;
+    try {
+      setSaving(true);
+      await saveInitialSquad(draft.map(p => p.id));
+      const squad = await fetchUserSquad();
+      setPersistedSquad(squad);
+      setCurrentTab("pitch");
+      showSuccess("Squad Saved Successfully!");
+    } catch (err: any) {
+      console.error("Save error:", err);
+      // Try to extract the message from the server action error
+      const msg = err.message || "Failed to save squad. Check your connection.";
+      showError(msg);
+    } finally {
+      setSaving(false);
+    }
+  };
+
+  const handleSwap = async (p1Id: string, p2Id: string) => {
+    if (!persistedSquad || squadStatus?.locked) return;
+    
+    // Optimistic Update
+    const newSquadPlayers = [...persistedSquad.squad_players];
+    const idx1 = newSquadPlayers.findIndex(x => x.player_id === p1Id);
+    const idx2 = newSquadPlayers.findIndex(x => x.player_id === p2Id);
+
+    const tempIsStarter = newSquadPlayers[idx1].is_starter;
+    const tempBenchOrder = newSquadPlayers[idx1].bench_order;
+
+    newSquadPlayers[idx1].is_starter = newSquadPlayers[idx2].is_starter;
+    newSquadPlayers[idx1].bench_order = newSquadPlayers[idx2].bench_order;
+
+    newSquadPlayers[idx2].is_starter = tempIsStarter;
+    newSquadPlayers[idx2].bench_order = tempBenchOrder;
+
+    setPersistedSquad({ ...persistedSquad, squad_players: newSquadPlayers });
+
+    try {
+      await updateSquadArrangement(persistedSquad.id, newSquadPlayers.map(p => ({
+        id: p.player_id,
+        is_starter: p.is_starter,
+        bench_order: p.bench_order,
+        points_multiplier: p.points_multiplier
+      })));
+    } catch (err: any) {
+      showError(err.message || "Failed to sync swap");
+    }
+  };
+
+  const handleSetCaptain = async (playerId: string) => {
+    if (!persistedSquad || squadStatus?.locked) return;
+
+    const newSquadPlayers = persistedSquad.squad_players.map((p: any) => ({
+      ...p,
+      points_multiplier: p.player_id === playerId ? 2 : 1
+    }));
+
+    setPersistedSquad({ ...persistedSquad, squad_players: newSquadPlayers });
+
+    try {
+      await updateSquadArrangement(persistedSquad.id, newSquadPlayers.map((p: any) => ({
+        id: p.player_id,
+        is_starter: p.is_starter,
+        bench_order: p.bench_order,
+        points_multiplier: p.points_multiplier
+      })));
+      showSuccess("Captained!");
+    } catch (err: any) {
+      showError(err.message || "Failed to set captain");
+    }
+  };
+
+  const showError = (msg: string) => { setError(msg); setTimeout(() => setError(null), 3000); };
+  const showSuccess = (msg: string) => { setSuccess(msg); setTimeout(() => setSuccess(null), 3000); };
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#070B14] flex flex-col items-center justify-center gap-4 text-neon">
+        <Loader2 className="animate-spin" size={40} />
+        <span className="text-[10px] font-black uppercase tracking-[0.2em]">Synchronizing Data</span>
+      </div>
+    );
+  }
 
   return (
-    <div className="px-5 pb-8 animate-in fade-in duration-500 flex flex-col lg:flex-row gap-8 mt-2">
+    <div className="relative min-h-screen bg-[#070B14] pb-24">
       
-      {/* Left Column: Pitch & Overview */}
-      <div className="flex-1 flex flex-col gap-6">
-        {/* Header: Balance & Transfers */}
-        <div className="flex justify-between items-end">
-          <div className="flex flex-col">
-            <span className="text-gray-400 text-xs font-semibold tracking-wider uppercase mb-1">
-              Current Balance
-            </span>
-            <div className="flex items-baseline gap-2">
-              <span className="text-neon text-4xl font-black tracking-tighter">100.0</span>
-              <span className="text-gray-300 text-sm font-medium">/ 100.0 M</span>
+      {/* Dynamic Header */}
+      <div className="sticky top-0 z-50 bg-[#0c121e]/80 backdrop-blur-xl border-b border-white/5 py-4 px-5 shadow-2xl">
+        <div className="max-w-4xl mx-auto">
+          {!persistedSquad ? (
+            /* Draft Mode Header */
+            <div className="flex flex-col gap-4">
+               <div className="flex justify-between items-center text-neon">
+                  <div className="flex flex-col">
+                    <span className="text-gray-500 text-[9px] font-black tracking-widest uppercase mb-1">Budget</span>
+                    <span className={cn("text-4xl font-black tracking-tighter", remainingBudget < 0 && "text-red-500")}>
+                      {remainingBudget.toFixed(1)}M
+                    </span>
+                  </div>
+                  <div className="bg-neon/10 px-4 py-2 rounded-2xl border border-neon/20 flex items-center gap-3">
+                    <Users size={18} />
+                    <span className="text-white font-black text-xl">{draft.length}<span className="text-gray-500 text-sm">/15</span></span>
+                  </div>
+               </div>
+               <div className="grid grid-cols-4 gap-2">
+                 {Object.keys(LIMITS).map(pos => (
+                   <div key={pos} className="bg-white/[0.03] rounded-xl p-2 border border-white/5 flex flex-col items-center">
+                     <span className="text-gray-500 text-[9px] font-black uppercase">{pos}</span>
+                     <span className={cn("text-xs font-bold", counts[pos] === LIMITS[pos] ? "text-neon" : "text-white")}>{counts[pos]}/{LIMITS[pos]}</span>
+                   </div>
+                 ))}
+               </div>
             </div>
-            <div className="h-1.5 w-48 bg-[#1A2235] rounded-full mt-2 overflow-hidden">
-              <div className="h-full bg-neon w-[100%] rounded-full shadow-[0_0_10px_rgba(74,222,128,0.5)]"></div>
+          ) : (
+            /* Active Squad Header */
+            <div className="flex justify-between items-center py-2">
+               <div className="flex flex-col">
+                  <span className="text-gray-500 text-[10px] font-black uppercase tracking-widest">Gameweek {squadStatus?.gameweek}</span>
+                  <span className="text-white text-2xl font-black tracking-tighter">Your Squad</span>
+               </div>
+               <div className="flex flex-col items-end">
+                  <span className="text-gray-500 text-[9px] font-black uppercase tracking-widest leading-none mb-1">Status</span>
+                  <div className={cn(
+                    "px-3 py-1 rounded-full text-[10px] font-black uppercase",
+                    squadStatus?.locked ? "bg-red-500/10 text-red-500 border border-red-500/20" : "bg-neon/10 text-neon border border-neon/20"
+                  )}>
+                    {squadStatus?.locked ? "LOCKED" : "OPEN"}
+                  </div>
+               </div>
             </div>
-          </div>
-
-          <button className="bg-neon text-[var(--background)] px-5 py-2.5 rounded-xl font-bold flex items-center gap-2 shadow-[0_4px_14px_0_rgba(74,222,128,0.39)] hover:scale-105 transition-transform">
-            <ArrowLeftRight size={18} strokeWidth={2.5} />
-            Transfers
-          </button>
-        </div>
-
-        {/* Pitch Area */}
-        <div className="relative w-full aspect-[3/4] bg-[#0c121e] rounded-3xl border border-white/5 overflow-hidden shadow-2xl p-4 flex flex-col justify-between py-6">
-          <div className="absolute inset-0 pointer-events-none opacity-20">
-            <div className="w-full h-full border-[1.5px] border-neon/50 rounded-lg absolute inset-0 m-4 w-[calc(100%-32px)] h-[calc(100%-32px)]"></div>
-            <div className="absolute top-1/2 left-4 right-4 h-[1.5px] bg-neon/50"></div>
-            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-20 h-20 rounded-full border-[1.5px] border-neon/50"></div>
-            <div className="absolute top-4 left-1/2 -translate-x-1/2 w-40 h-24 border-[1.5px] border-neon/50 border-t-0 rounded-b-lg"></div>
-            <div className="absolute bottom-4 left-1/2 -translate-x-1/2 w-40 h-24 border-[1.5px] border-neon/50 border-b-0 rounded-t-lg"></div>
-          </div>
-
-          <div className="relative z-10 h-full flex flex-col justify-between">
-            {renderRow(fwd)}
-            {renderRow(mid)}
-            {renderRow(def)}
-            {renderRow(gk)}
-          </div>
+          )}
         </div>
       </div>
 
-      {/* Right Column: Player Market List */}
-      <div className="w-full lg:w-[400px] flex flex-col gap-4">
-        <div className="flex items-center justify-between">
-            <h3 className="text-white font-bold text-lg">Player Market</h3>
-            <span className="text-gray-400 text-xs font-bold uppercase">{loading ? "" : `${filteredPlayers.length} Players`}</span>
+      <div className="max-w-4xl mx-auto px-5 mt-6 flex flex-col gap-6">
+        
+        {/* Tab Switcher */}
+        <div className="flex bg-[#121A2B] p-1.5 rounded-2xl border border-white/5 self-center">
+           {!persistedSquad && (
+             <>
+                <button onClick={() => setCurrentTab("market")} className={cn("px-8 py-2.5 rounded-xl text-sm font-bold transition-all", currentTab === "market" ? "bg-neon text-black" : "text-gray-400")}>Market</button>
+                <button onClick={() => setCurrentTab("draft")} className={cn("px-8 py-2.5 rounded-xl text-sm font-bold transition-all", currentTab === "draft" ? "bg-neon text-black" : "text-gray-400")}>Draft</button>
+             </>
+           )}
+           {persistedSquad && (
+             <>
+                <button onClick={() => setCurrentTab("pitch")} className={cn("px-8 py-2.5 rounded-xl text-sm font-bold transition-all", currentTab === "pitch" ? "bg-neon text-black" : "text-gray-400")}>Pitch</button>
+                <button onClick={() => setCurrentTab("pitch")} className="px-8 py-2.5 rounded-xl text-sm font-bold text-gray-700 cursor-not-allowed" disabled>Transfers (Locked)</button>
+             </>
+           )}
         </div>
 
-        {/* Search & Filter */}
-        <div className="flex gap-2">
-            <div className="relative flex-1">
-                <Search size={16} className="absolute left-3 top-1/2 -translate-y-1/2 text-gray-500" />
+        {/* View Content */}
+        {currentTab === "market" && !persistedSquad && (
+          <div className="flex flex-col gap-4 animate-in slide-in-from-left-4 duration-300">
+             <div className="flex flex-col sm:flex-row gap-3">
                 <input 
-                    type="text" 
-                    placeholder="Search name or pos..." 
-                    className="w-full bg-[#121A2B] border border-white/5 rounded-xl py-2.5 pl-10 pr-4 text-sm text-white focus:outline-none focus:border-neon/30 transition-colors"
-                    value={searchTerm}
-                    onChange={(e) => setSearchTerm(e.target.value)}
+                  type="text" placeholder="Search players..." value={searchTerm} onChange={(e) => setSearchTerm(e.target.value)}
+                  className="flex-1 bg-[#121A2B] border border-white/5 rounded-2xl py-3 px-5 text-white outline-none focus:border-neon/30"
                 />
-            </div>
-            <button className="bg-[#121A2B] border border-white/5 p-2.5 rounded-xl text-white">
-                <Filter size={20} />
-            </button>
-        </div>
+                <select value={posFilter} onChange={(e) => setPosFilter(e.target.value)} className="bg-[#121A2B] border border-white/5 rounded-2xl px-4 py-3 text-white text-sm outline-none">
+                  <option value="ALL">All Pos</option>
+                  <option value="GK">GK</option>
+                  <option value="DEF">DEF</option>
+                  <option value="MID">MID</option>
+                  <option value="FWD">FWD</option>
+                </select>
+             </div>
 
-        {/* List Header */}
-        <div className="grid grid-cols-[40px,1fr,60px,60px] px-4 py-2 text-[10px] font-black tracking-widest text-gray-400 uppercase border-b border-white/5">
-            <span>POS</span>
-            <span>PLAYER</span>
-            <span className="text-right">TEAM</span>
-            <span className="text-right text-neon">PRICE</span>
-        </div>
+             <div className="bg-[#121A2B] border border-white/5 rounded-[32px] overflow-hidden divide-y divide-white/5">
+                {filteredPlayers.map(p => {
+                  const inDraft = !!draft.find(x => x.id === p.id);
+                  return (
+                    <div key={p.id} className="flex items-center justify-between p-4 group">
+                       <div className="flex items-center gap-3">
+                          <span className="text-[10px] font-bold text-gray-500 bg-white/5 px-2 py-0.5 rounded">{p.position}</span>
+                          <div className="flex flex-col">
+                            <span className="text-white font-bold">{p.name}</span>
+                            <span className="text-gray-500 text-[10px] uppercase">{teamMap[p.team_id]}</span>
+                          </div>
+                       </div>
+                       <div className="flex items-center gap-4">
+                          <span className="text-neon font-black">{p.price}M</span>
+                          <button disabled={inDraft} onClick={() => addPlayer(p)} className={cn("w-10 h-10 rounded-xl flex items-center justify-center transition-all", inDraft ? "bg-white/5 text-gray-600" : "bg-neon/10 text-neon hover:bg-neon hover:text-black")}>
+                            {inDraft ? <CheckCircle2 size={18} /> : <Plus size={18} />}
+                          </button>
+                       </div>
+                    </div>
+                  );
+                })}
+             </div>
+          </div>
+        )}
 
-        {/* Scrollable Container */}
-        <div className="bg-[#121A2B] rounded-3xl border border-white/5 overflow-hidden flex-1 min-h-[400px] lg:max-h-[600px] relative">
-            {loading ? (
-                <div className="absolute inset-0 flex items-center justify-center gap-2 text-gray-500">
-                    <Loader2 className="animate-spin text-neon" size={20} />
-                    <span className="text-xs font-bold uppercase tracking-widest">Loading Market...</span>
-                </div>
-            ) : (
-                <div className="overflow-y-auto h-full p-2 custom-scrollbar">
-                    {filteredPlayers.map((player) => (
-                        <div 
-                            key={player.id} 
-                            className="grid grid-cols-[40px,1fr,60px,60px] items-center p-3 rounded-2xl hover:bg-white/[0.03] transition-colors group cursor-pointer"
-                        >
-                            <span className="text-[10px] font-bold text-gray-500 bg-[#1A2235] w-fit px-1.5 py-0.5 rounded uppercase">{player.position}</span>
-                            <span className="text-sm font-bold text-white truncate pl-2">{player.name}</span>
-                            <span className="text-[10px] font-bold text-gray-300 text-right uppercase">{teamMap[player.team_id] || "???"}</span>
-                            <span className="text-sm font-black text-neon text-right">{player.price}M</span>
-                        </div>
+        {currentTab === "draft" && !persistedSquad && (
+          <div className="flex flex-col gap-8 animate-in slide-in-from-right-4 duration-300 pb-12">
+             {draft.length === 0 ? (
+                <div className="bg-[#121A2B] rounded-[32px] p-20 text-center text-gray-500">No players in draft</div>
+             ) : (
+                <>
+                  <div className="bg-[#121A2B] border border-white/5 rounded-[32px] divide-y divide-white/5 overflow-hidden">
+                    {draft.map(p => (
+                       <div key={p.id} className="flex items-center justify-between p-4">
+                          <div className="flex items-center gap-3">
+                             <span className="text-[10px] font-bold text-gray-500 bg-white/5 px-2 py-0.5 rounded">{p.position}</span>
+                             <span className="text-white font-bold">{p.name}</span>
+                          </div>
+                          <button onClick={() => removePlayer(p.id)} className="w-10 h-10 rounded-xl bg-red-400/10 text-red-400 flex items-center justify-center"><Trash2 size={18} /></button>
+                       </div>
                     ))}
-                    {filteredPlayers.length === 0 && (
-                        <div className="p-8 text-center text-gray-500 text-sm italic">No players found matching your search</div>
-                    )}
-                </div>
-            )}
-        </div>
+                  </div>
+                  <button 
+                    disabled={draft.length < 15 || saving} 
+                    onClick={handleConfirmSquad}
+                    className="w-full bg-neon text-black font-black py-4 rounded-2xl shadow-xl flex items-center justify-center gap-3"
+                  >
+                    {saving ? <Loader2 className="animate-spin" /> : <Shield size={20} />}
+                    CONFIRM {draft.length}/15 SQUAD
+                  </button>
+                </>
+             )}
+          </div>
+        )}
+
+        {currentTab === "pitch" && persistedSquad && (
+          <PitchView 
+            players={persistedSquad.squad_players} 
+            onSwap={handleSwap} 
+            onSetCaptain={handleSetCaptain}
+            isLocked={!!squadStatus?.locked}
+          />
+        )}
       </div>
 
-    </div>
-  );
-}
+      {/* Notifications */}
+      <div className="fixed bottom-24 left-1/2 -translate-x-1/2 z-[100] flex flex-col gap-3">
+         {error && <div className="bg-red-500 text-white px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-2 animate-bounce"><AlertCircle size={18} />{error}</div>}
+         {success && <div className="bg-neon text-black px-6 py-3 rounded-2xl shadow-2xl flex items-center gap-2 font-bold animate-pulse"><CheckCircle2 size={18} />{success}</div>}
+      </div>
 
-function PlayerCard({ player }: { player: any }) {
-  return (
-    <div className="flex flex-col items-center justify-center group cursor-pointer animate-in zoom-in duration-300">
-      <div className="relative w-[52px] h-[52px] rounded-full border-2 border-neon bg-navy-dark shadow-[0_0_15px_rgba(74,222,128,0.3)] flex items-center justify-center transition-transform group-hover:scale-105">
-        <User className="text-gray-400" size={24} />
-      </div>
-      
-      <div className="mt-1.5 flex flex-col items-center">
-        <div className="bg-[#1A2235] px-2.5 py-1 rounded-t-md border-b border-navy text-[10px] font-bold text-white text-center min-w-[60px] truncate shadow-lg">
-          {player.name}
-        </div>
-        <div className="bg-[#242D45] px-2.5 py-0.5 rounded-b-md text-[10px] font-extrabold text-neon text-center min-w-[60px] shadow-lg">
-          {player.points || 0} pts
-        </div>
-      </div>
     </div>
   );
 }

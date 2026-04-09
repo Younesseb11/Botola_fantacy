@@ -4,9 +4,9 @@
 -- ============================================================
 
 -- Drop table if you need to recreate it cleanly
--- DROP TABLE IF EXISTS public.live_events;
+-- DROP TABLE IF EXISTS public.player_live_points;
 
-CREATE TABLE IF NOT EXISTS public.live_events (
+CREATE TABLE IF NOT EXISTS public.player_live_points (
     id          UUID PRIMARY KEY DEFAULT gen_random_uuid(),
     player_id   UUID NOT NULL REFERENCES public.players(id) ON DELETE CASCADE,
     match_id    UUID,                          -- optional: link to a matches table
@@ -20,21 +20,21 @@ CREATE TABLE IF NOT EXISTS public.live_events (
 );
 
 -- Index for fast lookups by player
-CREATE INDEX IF NOT EXISTS live_events_player_id_idx ON public.live_events(player_id);
+CREATE INDEX IF NOT EXISTS player_live_points_player_id_idx ON public.player_live_points(player_id);
 
 -- ── Enable Supabase Realtime ─────────────────────────────────────────────────
 -- This adds the table to the publication so realtime subscriptions work.
-ALTER PUBLICATION supabase_realtime ADD TABLE public.live_events;
+ALTER PUBLICATION supabase_realtime ADD TABLE public.player_live_points;
 
 -- ── Row Level Security ───────────────────────────────────────────────────────
 -- Enable RLS but allow public reads (so the client-side subscription works
 -- without authentication). Writes should be restricted to service-role only.
 
-ALTER TABLE public.live_events ENABLE ROW LEVEL SECURITY;
+ALTER TABLE public.player_live_points ENABLE ROW LEVEL SECURITY;
 
 -- Allow anyone to read events (for the live scores feed)
-CREATE POLICY "Allow public read of live_events"
-  ON public.live_events
+CREATE POLICY "Allow public read of player_live_points"
+  ON public.player_live_points
   FOR SELECT
   USING (true);
 
@@ -47,7 +47,7 @@ CREATE POLICY "Allow public read of live_events"
 -- Uncomment and run to verify the live feed is working.
 
 /*
-INSERT INTO public.live_events (player_id, event_type, points, minute)
+INSERT INTO public.player_live_points (player_id, event_type, points, minute)
 VALUES
   -- Replace 'YOUR_PLAYER_ID_HERE' with a real player UUID from public.players
   ('YOUR_PLAYER_ID_HERE', 'goal',        5, 22),

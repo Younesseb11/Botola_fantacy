@@ -1,0 +1,14 @@
+{
+  "seeded_at": "2026-04-09T14:26:01.129652+00:00",
+  "gameweek": 12,
+  "upserted": [
+    {
+      "home_team_id": "e64e52fa-9caa-4cd0-80b9-8ed8b65a5d08",
+      "away_team_id": "60ca6a7a-8531-4d9a-9878-4b50c395d796",
+      "match_date": "2026-04-12T20:00:00+01:00",
+      "gameweek": 12,
+      "status": "Upcoming"
+    }
+  ],
+  "skipped": []
+}
