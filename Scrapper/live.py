@@ -17,7 +17,7 @@ Set DEBUG_MODE = True below to test with a past match immediately.
 # ---------------------------------------------------------------------------
 #  Toggle this to True to test right now with a recent past match
 # ---------------------------------------------------------------------------
-DEBUG_MODE = True
+DEBUG_MODE = False
 # ---------------------------------------------------------------------------
 
 import os, sys, time, re, json
@@ -95,14 +95,24 @@ def supa_get(table, params=None):
 
 
 def supa_insert(table, rows):
-    r = requests.post(
-        f"{SUPABASE_URL}/rest/v1/{table}",
-        headers=_h({"Prefer": "return=representation"}),
-        json=rows, timeout=15,
-    )
+    """Inserts rows with a 2-second retry if the first attempt fails."""
+    def _do():
+        return requests.post(
+            f"{SUPABASE_URL}/rest/v1/{table}",
+            headers=_h({"Prefer": "return=representation"}),
+            json=rows, timeout=15,
+        )
+    
+    r = _do()
     if r.status_code not in (200, 201):
-        print(f"  [!] Supabase {r.status_code}: {r.text[:300]}")
+        print(f"  [!] Supabase Insert failed ({r.status_code}). Retrying in 2s...")
+        time.sleep(2)
+        r = _do()
+        
+    if r.status_code not in (200, 201):
+        print(f"  [CRITICAL] Supabase second attempt failed: {r.text[:300]}")
         return []
+    
     return r.json()
 
 
@@ -148,7 +158,7 @@ def _find_player(name, team_hint=""):
             s *= 1.3          # boost same-team matches
         if s > best_s:
             best_s, best_p = s, p
-    return best_p if best_s >= 0.52 else None
+    return best_p if best_s >= 0.65 else None
 
 
 def find_player_id(name, team_hint=""):
@@ -547,7 +557,18 @@ def push_events(events, match_ctx):
 
     if rows:
         result = supa_insert("player_live_points", rows)
-        print(f"    --> Pushed {len(result)} row(s) to player_live_points")
+        if result:
+            # Create a nice summary string for the terminal
+            summary_parts = []
+            for r in rows:
+                p_name = r.get("player_name", "Unknown")
+                pts_val = r.get("points", 0)
+                etype_label = r["event_type"].replace('_', ' ').title()
+                summary_parts.append(f"{etype_label}: {p_name} +{pts_val}pts")
+            
+            print(f"    [PUSHED] {' | '.join(summary_parts)}")
+        else:
+            print(f"    [!] Failed to push {len(rows)} events to player_live_points")
     return rows
 
 

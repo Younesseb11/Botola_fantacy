@@ -67,44 +67,30 @@ export async function saveInitialSquad(playerIds: string[]) {
       gameweek: gameweek,
       formation: '4-4-2',
       team_name: `${user.email?.split('@')[0]}'s Squad`,
-      budget_remaining: 100.0 - (players.reduce((acc, p) => acc + p.price, 0)),
+      budget_remaining: Number((100.0 - (players.reduce((acc, p) => acc + (Number(p.price) || 0), 0))).toFixed(1)),
     }, { onConflict: 'user_id, gameweek' })
     .select()
     .single()
 
   if (squadErr) throw new Error(squadErr.message)
 
-  // Auto-assign 4-4-2 Starters
-  // Needs: 1 GK, 4 DEF, 4 MID, 2 FWD
-  const starters: string[] = []
-  const bench: string[] = []
-
-  const gks = players.filter(p => p.position === 'GK')
-  const defs = players.filter(p => p.position === 'DEF')
-  const mids = players.filter(p => p.position === 'MID')
-  const fwds = players.filter(p => p.position === 'FWD')
-
-  // Pick Starters
-  starters.push(gks[0].id)
-  starters.push(...defs.slice(0, 4).map(p => p.id))
-  starters.push(...mids.slice(0, 4).map(p => p.id))
-  starters.push(...fwds.slice(0, 2).map(p => p.id))
-
-  // Everyone else is bench
-  const starterSet = new Set(starters)
-  players.forEach(p => {
-    if (!starterSet.has(p.id)) bench.push(p.id)
-  })
+  // Auto-assign Starters based on position order (GK -> DEF -> MID -> FWD)
+  const posOrder: Record<string, number> = { GK: 0, DEF: 1, MID: 2, FWD: 3 };
+  const sortedPlayers = [...players].sort((a, b) => posOrder[a.position] - posOrder[b.position]);
+  
+  const starters = sortedPlayers.slice(0, 11);
+  const bench = sortedPlayers.slice(11);
+  const starterIds = new Set(starters.map(p => p.id));
 
   // Prepare squad_players rows
-  const squadPlayers = players.map(p => {
-    const isStarter = starterSet.has(p.id)
+  const squadPlayers = sortedPlayers.map(p => {
+    const isStarter = starterIds.has(p.id);
     return {
       squad_id: squad.id,
       player_id: p.id,
       is_starter: isStarter,
-      bench_order: isStarter ? null : bench.indexOf(p.id) + 1,
-      points_multiplier: starters[0] === p.id ? 2 : 1 // Auto-captain the GK for now
+      bench_order: isStarter ? null : bench.findIndex(bx => bx.id === p.id) + 1,
+      points_multiplier: starters[0].id === p.id ? 2 : 1 // Auto-captain the first player (usually GK)
     }
   })
 

@@ -30,9 +30,10 @@ interface PitchViewProps {
   onSwap: (playerAId: string, playerBId: string) => void;
   onSetCaptain: (playerId: string) => void;
   isLocked: boolean;
+  pointsMap?: Record<string, number>;
 }
 
-export function PitchView({ players, onSwap, onSetCaptain, isLocked }: PitchViewProps) {
+export function PitchView({ players, onSwap, onSetCaptain, isLocked, pointsMap = {} }: PitchViewProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const starters = players.filter((p) => p.is_starter);
@@ -90,7 +91,7 @@ export function PitchView({ players, onSwap, onSetCaptain, isLocked }: PitchView
       <div 
         onClick={() => handlePlayerClick(p)}
         className={cn(
-          "flex flex-col items-center gap-1 transition-all cursor-pointer relative",
+          "flex flex-col items-center gap-1 transition-all cursor-pointer relative group",
           isSelected ? "scale-110 z-10" : "hover:scale-105",
           isLocked && "cursor-not-allowed opacity-80"
         )}
@@ -119,7 +120,11 @@ export function PitchView({ players, onSwap, onSetCaptain, isLocked }: PitchView
                 e.stopPropagation();
                 onSetCaptain(p.player_id);
               }}
-              className="absolute -bottom-1 -right-1 bg-white/10 hover:bg-neon hover:text-black p-1 rounded-md text-white transition-all opacity-0 group-hover:opacity-100"
+              className={cn(
+                "absolute -bottom-1 -right-1 bg-white/10 hover:bg-neon hover:text-black p-1 rounded-md transition-all z-20",
+                isCaptain ? "text-yellow-500 opacity-100" : "text-white opacity-0 group-hover:opacity-60"
+              )}
+              title="Set as Captain"
             >
               <Star size={10} fill={isCaptain ? "currentColor" : "none"} />
             </button>
@@ -130,9 +135,14 @@ export function PitchView({ players, onSwap, onSetCaptain, isLocked }: PitchView
           <span className="text-white text-[10px] sm:text-xs font-bold truncate w-full text-center tracking-tight">
             {p.player.name.split(' ').pop()}
           </span>
-          <span className="text-[8px] font-black text-neon/60 uppercase">
-             {teamName}
-          </span>
+          <div className="flex items-center gap-1">
+            <span className="text-[8px] font-black text-neon/60 uppercase">
+               {teamName}
+            </span>
+            <span className="text-[8px] font-black text-neon">
+               {pointsMap[p.player_id] || 0}P
+            </span>
+          </div>
         </div>
       </div>
     );
