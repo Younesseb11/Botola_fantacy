@@ -70,6 +70,69 @@ GOAL_PTS_BY_POS = {
     "FWD":  4,
 }
 
+# Team name aliases (Flashscore label → DB canonical name)
+# Copied from seed_fixtures.py — keep in sync!
+TEAM_NAME_ALIASES: dict[str, str] = {
+    # Exact DB names
+    "FAR Rabat":            "FAR Rabat",
+    "Maghreb Fez":          "Maghreb Fez",
+    "Olympique de Safi":    "Olympique de Safi",
+    "Wydad AC":             "Wydad AC",
+    "Dcheira":              "Dcheira",
+    "Berkane":              "Berkane",
+    "Difaa El Jadidi":      "Difaa El Jadidi",
+    "Hassania Agadir":      "Hassania Agadir",
+    "IR Tanger":            "IR Tanger",
+    "FUS Rabat":            "FUS Rabat",
+    "Renaissance Zemamra":  "Renaissance Zemamra",
+    "Raja Casablanca":      "Raja Casablanca",
+    "Yacoub El Mansour":    "Yacoub El Mansour",
+    "Union Touarga":        "Union Touarga",
+    "COD Meknes":           "COD Meknes",
+    "Kawkab Marrakech":     "Kawkab Marrakech",
+    # Flashscore alternates / abbreviations
+    "Wydad Athletic":       "Wydad AC",
+    "Wydad Casablanca":     "Wydad AC",
+    "WAC":                  "Wydad AC",
+    "Raja":                 "Raja Casablanca",
+    "FAR":                  "FAR Rabat",
+    "FUS":                  "FUS Rabat",
+    "MAS Fez":              "Maghreb Fez",
+    "MAS":                  "Maghreb Fez",
+    "OCS":                  "Olympique de Safi",
+    "Olympique Safi":       "Olympique de Safi",
+    "RS Berkane":           "Berkane",
+    "RSB":                  "Berkane",
+    "Difaa Jadida":         "Difaa El Jadidi",
+    "HUSA":                 "Hassania Agadir",
+    "Hassania USAM":        "Hassania Agadir",
+    "IRT":                  "IR Tanger",
+    "Ittihad Riadi Tanger": "IR Tanger",
+    "RCAZ":                 "Renaissance Zemamra",
+    "Renaissance Chaouia":  "Renaissance Zemamra",
+    "YMR":                  "Yacoub El Mansour",
+    "Union Touarga SC":     "Union Touarga",
+    "UTS":                  "Union Touarga",
+    "COD":                  "COD Meknes",
+    "CODM":                 "COD Meknes",
+    "KACM":                 "Kawkab Marrakech",
+    "Kawkab":               "Kawkab Marrakech",
+    "Dcheira IH":           "Dcheira",
+    "DHJ":                  "Dcheira",
+}
+
+
+def normalize_team(name: str) -> str:
+    """Return canonical DB team name, or the original name if no alias found."""
+    name = name.strip()
+    if name in TEAM_NAME_ALIASES:
+        return TEAM_NAME_ALIASES[name]
+    lower = name.lower()
+    for alias, canonical in TEAM_NAME_ALIASES.items():
+        if alias.lower() in lower or lower in alias.lower():
+            return canonical
+    return name  # return original if no match (don't lose data)
+
 # ===========================================================================
 #  SUPABASE REST (no SDK needed)
 # ===========================================================================
@@ -140,25 +203,67 @@ def _sim(a, b):
     return SequenceMatcher(None, a.lower(), b.lower()).ratio()
 
 
+def _is_abbreviated(name):
+    """Check if name starts with an abbreviated first name like 'A.' or 'A. '"""
+    return bool(re.match(r'^[A-Z]\. ', name))
+
+
+def _surname(full_name):
+    """Return the last word of a full name (surname)."""
+    parts = full_name.strip().split()
+    return parts[-1] if parts else full_name
+
+
 def _find_player(name, team_hint=""):
-    """Return the best-matching player dict from _players, or None."""
+    """Return the best-matching player dict from _players, or None.
+    
+    Handles abbreviated Flashscore names like 'A. Kaabi' by also comparing
+    against the surname of each DB player. Uses a lower threshold (0.55)
+    for same-team matches to catch more edge cases.
+    """
     if not name or not _players:
         return None
+    # Normalize team_hint through aliases before matching
+    normalized_hint = normalize_team(team_hint) if team_hint else team_hint
     team_id = None
     for t in _teams:
-        if (team_hint.lower() in t["name"].lower()
-                or t["name"].lower() in team_hint.lower()
-                or t["short_name"].strip().lower() == team_hint.strip().lower()):
+        if (normalized_hint.lower() in t["name"].lower()
+                or t["name"].lower() in normalized_hint.lower()
+                or t["short_name"].strip().lower() == normalized_hint.strip().lower()):
             team_id = t["id"]
             break
+
+    abbreviated = _is_abbreviated(name)
+    search_surname = _surname(name) if abbreviated else None
+    # If abbreviated, also extract the initial letter for validation
+    initial = name[0].lower() if abbreviated else None
+
     best_p, best_s = None, 0.0
     for p in _players:
+        # Standard full-name similarity
         s = _sim(name, p["name"])
-        if team_id and p["team_id"] == team_id:
-            s *= 1.3          # boost same-team matches
+
+        # Abbreviated name boost: compare surname against DB player's surname
+        if abbreviated and search_surname:
+            db_surname = _surname(p["name"])
+            surname_sim = _sim(search_surname, db_surname)
+            # Also verify the initial letter matches
+            db_first = p["name"].strip().split()[0] if p["name"].strip() else ""
+            initial_match = db_first and db_first[0].lower() == initial
+            if surname_sim > s and initial_match:
+                s = surname_sim
+
+        # Boost same-team matches
+        same_team = team_id and p["team_id"] == team_id
+        if same_team:
+            s *= 1.3
+
         if s > best_s:
             best_s, best_p = s, p
-    return best_p if best_s >= 0.65 else None
+
+    # Lower threshold for same-team matches (0.55), standard 0.65 otherwise
+    threshold = 0.55 if (team_id and best_p and best_p["team_id"] == team_id) else 0.65
+    return best_p if best_s >= threshold else None
 
 
 def find_player_id(name, team_hint=""):
@@ -507,6 +612,55 @@ def scrape_events(page, url):
 #  PHASE 3 -- PUSH TO SUPABASE
 # ===========================================================================
 
+def _ensure_starters(starters, page, match_ctx):
+    """
+    If Playwright lineup scraping returned empty/None, fall back to extracting
+    unique player names from the match events (goals, cards, subs, assists).
+    This guarantees appearance points are awarded even when lineup DOM fails.
+    """
+    has_home = starters and starters.get("home")
+    has_away = starters and starters.get("away")
+    if has_home and has_away:
+        return starters  # lineups were scraped fine
+
+    print("  [!] Lineup scrape returned empty — falling back to event-based player extraction...")
+    events = scrape_events(page, match_ctx["url"])
+    if not events:
+        print("  [!] No events found either — cannot determine players for appearance points.")
+        return starters or {"home": [], "away": []}
+
+    home_players = set()
+    away_players = set()
+    home_team = match_ctx.get("home", "")
+    away_team = match_ctx.get("away", "")
+
+    for ev in events:
+        team = ev.get("team", "")
+        player = ev.get("player", "")
+        assist = ev.get("assist", "")
+        player_out = ev.get("player_out", "")
+
+        # Determine which side this player belongs to
+        is_home = team and (team.lower() in home_team.lower() or home_team.lower() in team.lower())
+        is_away = team and (team.lower() in away_team.lower() or away_team.lower() in team.lower())
+
+        target = home_players if is_home else (away_players if is_away else home_players)
+
+        if player:
+            target.add(player)
+        if assist:
+            target.add(assist)
+        if player_out:
+            target.add(player_out)
+
+    result = {
+        "home": list(home_players) if not has_home else starters["home"],
+        "away": list(away_players) if not has_away else starters["away"],
+    }
+    total = len(result["home"]) + len(result["away"])
+    print(f"  [FALLBACK] Extracted {total} unique players from events ({len(result['home'])} home, {len(result['away'])} away)")
+    return result
+
 def _goal_points(player_name, team_hint):
     """Return point value for a goal based on the player's position."""
     pos = find_player_position(player_name, team_hint)
@@ -518,41 +672,62 @@ def push_events(events, match_ctx):
     rows = []
     today_iso = date.today().isoformat()
 
+    # Normalize team names through aliases before storing
+    norm_home = normalize_team(match_ctx.get("home", ""))
+    norm_away = normalize_team(match_ctx.get("away", ""))
+
+    def _match_side(team_name):
+        """Determine if a team is 'home' or 'away' based on normalized names."""
+        if not team_name:
+            return None
+        nt = normalize_team(team_name).lower()
+        nh = norm_home.lower()
+        na = norm_away.lower()
+        if nt == nh or nt in nh or nh in nt:
+            return "home"
+        if nt == na or nt in na or na in nt:
+            return "away"
+        return None
+
     for ev in events:
-        pid   = find_player_id(ev["player"], ev.get("team", ""))
+        ev_team = normalize_team(ev.get("team", ""))
+        pid   = find_player_id(ev["player"], ev_team)
         etype = ev["event_type"]
+        side  = _match_side(ev_team)
 
         # Calculate points based on event type
         if etype == "goal":
-            pts = _goal_points(ev["player"], ev.get("team", ""))
+            pts = _goal_points(ev["player"], ev_team)
         else:
             pts = PTS.get(etype, 0)
 
         rows.append({
             "player_name":     ev["player"],
             "player_id":       pid,
-            "team_name":       ev.get("team", ""),
+            "team_name":       ev_team,
             "event_type":      etype,
             "points":          pts,
             "minute":          ev.get("minute", ""),
-            "match_home_team": match_ctx.get("home", ""),
-            "match_away_team": match_ctx.get("away", ""),
+            "match_home_team": norm_home,
+            "match_away_team": norm_away,
             "match_date":      today_iso,
+            "match_side":      side,
         })
 
         # Auto-create an assist event when a goal has an assist
         if etype == "goal" and ev.get("assist"):
-            aid = find_player_id(ev["assist"], ev.get("team", ""))
+            aid = find_player_id(ev["assist"], ev_team)
             rows.append({
                 "player_name":     ev["assist"],
                 "player_id":       aid,
-                "team_name":       ev.get("team", ""),
+                "team_name":       ev_team,
                 "event_type":      "assist",
                 "points":          PTS["assist"],
                 "minute":          ev.get("minute", ""),
-                "match_home_team": match_ctx.get("home", ""),
-                "match_away_team": match_ctx.get("away", ""),
+                "match_home_team": norm_home,
+                "match_away_team": norm_away,
                 "match_date":      today_iso,
+                "match_side":      side,
             })
 
     if rows:
@@ -597,6 +772,7 @@ def polling_loop(page, match_ctx, starters=None, max_polls=None):
     """
     seen = set()
     poll_count = 0
+    is_first_poll = True
 
     # ---- Active Roster ----------------------------------------------------
     roster = ActiveRoster(starters, match_ctx)
@@ -725,7 +901,8 @@ def polling_loop(page, match_ctx, starters=None, max_polls=None):
                 status_text = (status_el.text_content() or "").strip()
 
                 should_award = False
-                if any(w in status_text.lower() for w in ("finished", "ft", "ended", "aet")):
+                is_finished = any(w in status_text.lower() for w in ("finished", "ft", "ended", "aet"))
+                if is_finished:
                     should_award = True
                 else:
                     minute_match = re.search(r'(\d+)', status_text)
@@ -734,11 +911,17 @@ def polling_loop(page, match_ctx, starters=None, max_polls=None):
                         if match_minute >= 60:
                             should_award = True
 
+                # Fix: if match is already finished on the very first poll
+                # (e.g. DEBUG_MODE with a past match), award played_60_mins
+                # immediately — assume all remaining starters played 60+ mins.
                 if not awarded_60_min and should_award:
                     still_on = roster.active_starters()
                     # Only award to players who were original starters
                     eligible = [n for n in still_on if roster.was_starter(n)]
-                    print(f"\n   [60-MINUTE MARK / END] Awarding points to {len(eligible)} starters who played 60 mins...")
+                    if is_first_poll and is_finished:
+                        print(f"\n   [FINISHED MATCH] Match already over on first poll — awarding 60-min points to {len(eligible)} starters.")
+                    else:
+                        print(f"\n   [60-MINUTE MARK / END] Awarding points to {len(eligible)} starters who played 60 mins...")
                     events_to_push = []
                     for s_name in eligible:
                         team_name = roster.team_for_starter(s_name)
@@ -764,6 +947,8 @@ def polling_loop(page, match_ctx, starters=None, max_polls=None):
                     return
         except Exception:
             pass
+
+        is_first_poll = False
 
         if max_polls and poll_count >= max_polls:
             print(f"\n   [DEBUG] Reached {max_polls} poll(s). Stopping.")
@@ -822,13 +1007,15 @@ def main():
             print(f"\n[DEBUG] Testing with: {DEBUG_MATCH['home']} vs {DEBUG_MATCH['away']}")
             # 1. Scrape Lineups
             starters = scrape_lineups(page, DEBUG_MATCH["url"])
-            if starters:
-                print(f"[DEBUG] Found {len(starters['home'])} Home and {len(starters['away'])} Away starters.")
+            starters = _ensure_starters(starters, page, DEBUG_MATCH)
+            if starters and (starters.get('home') or starters.get('away')):
+                total = len(starters.get('home', [])) + len(starters.get('away', []))
+                print(f"[DEBUG] Found {total} players for appearance points.")
                 # Push appearance points
                 starter_events = []
-                for s in starters['home']: 
+                for s in starters.get('home', []): 
                     starter_events.append({"player": s, "event_type": "appearance", "minute": "0'", "team": DEBUG_MATCH['home']})
-                for s in starters['away']:
+                for s in starters.get('away', []):
                     starter_events.append({"player": s, "event_type": "appearance", "minute": "0'", "team": DEBUG_MATCH['away']})
                 push_events(starter_events, DEBUG_MATCH)
                 
@@ -848,12 +1035,14 @@ def main():
         
         # 1. Scrape Lineups
         starters = scrape_lineups(page, live_match['url'])
-        if starters:
-            print(f"[*] Found lineups. Pushing appearance points for 22 starters...")
+        starters = _ensure_starters(starters, page, live_match)
+        if starters and (starters.get('home') or starters.get('away')):
+            total = len(starters.get('home', [])) + len(starters.get('away', []))
+            print(f"[*] Pushing appearance points for {total} players...")
             starter_events = []
-            for s in starters['home']: 
+            for s in starters.get('home', []): 
                 starter_events.append({"player": s, "event_type": "appearance", "minute": "0'", "team": live_match['home']})
-            for s in starters['away']:
+            for s in starters.get('away', []):
                 starter_events.append({"player": s, "event_type": "appearance", "minute": "0'", "team": live_match['away']})
             push_events(starter_events, live_match)
 

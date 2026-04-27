@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState, useMemo } from "react";
+import { useEffect, useState, useMemo, useCallback } from "react";
 import { 
   Plus, Trash2, Coins, Users, User, ChevronUp, ChevronDown, 
   AlertCircle, CheckCircle2, Loader2, Shield, Zap, Info, Bug, RefreshCcw
@@ -9,9 +9,7 @@ import { clsx, type ClassValue } from "clsx";
 import { twMerge } from "tailwind-merge";
 import { supabase } from "@/lib/supabase";
 import { 
-  getGameweekStatus, 
   saveInitialSquad, 
-  fetchUserSquad, 
   updateSquadArrangement,
   type SquadStatus
 } from "./actions";
@@ -73,6 +71,49 @@ export default function SquadPage() {
   const [error, setError] = useState<string | null>(null);
   const [success, setSuccess] = useState<string | null>(null);
 
+  // Helper: fetch gameweek status directly via client-side Supabase
+  // (replaces server action getGameweekStatus which uses cookies())
+  const fetchGameweekStatusClient = useCallback(async (): Promise<SquadStatus> => {
+    const { data: fixtures, error } = await supabase
+      .from('fixtures')
+      .select('gameweek, match_date')
+      .eq('status', 'Upcoming')
+      .order('match_date', { ascending: true })
+      .limit(1);
+
+    if (error || !fixtures || fixtures.length === 0) {
+      return { locked: false, deadline: null, gameweek: 1 };
+    }
+
+    const nextMatch = fixtures[0];
+    const deadline = new Date(nextMatch.match_date);
+    const isLocked = new Date() > deadline;
+
+    return {
+      locked: isLocked,
+      deadline: nextMatch.match_date,
+      gameweek: nextMatch.gameweek
+    };
+  }, []);
+
+  // Helper: fetch user squad directly via client-side Supabase
+  // (replaces server action fetchUserSquad which uses cookies())
+  const fetchSquadClient = useCallback(async () => {
+    const { data: { user } } = await supabase.auth.getUser();
+    if (!user) return null;
+
+    const { gameweek } = await fetchGameweekStatusClient();
+
+    const { data: squad } = await supabase
+      .from('user_squads')
+      .select(`*, squad_players(*, player:players(*, team:teams(short_name, logo_url)))`)
+      .eq('user_id', user.id)
+      .eq('gameweek', gameweek)
+      .single();
+
+    return squad;
+  }, [fetchGameweekStatusClient]);
+
   useEffect(() => {
     async function init() {
       try {
@@ -91,11 +132,11 @@ export default function SquadPage() {
         const { data: playersData } = await supabase.from("players").select("id, name, team_id, position, price");
         if (playersData) setPlayers(playersData);
 
-        // 2. Auth & Squad Check
-        const status = await getGameweekStatus();
+        // 2. Auth & Squad Check (direct client queries, no server actions)
+        const status = await fetchGameweekStatusClient();
         setSquadStatus(status);
 
-        const squad = await fetchUserSquad();
+        const squad = await fetchSquadClient();
         if (squad) {
           setPersistedSquad(squad);
           setCurrentTab("pitch"); // Show team if already drafted
@@ -107,7 +148,7 @@ export default function SquadPage() {
       }
     }
     init();
-  }, []);
+  }, [fetchGameweekStatusClient, fetchSquadClient]);
 
   // Fetch points for draft and persisted players
   useEffect(() => {
@@ -182,7 +223,7 @@ export default function SquadPage() {
       setSaving(true);
       // Logic in actions.ts handles the 11/4 split automatically in the version we just updated
       await saveInitialSquad(draft.map(p => p.id));
-      const squad = await fetchUserSquad();
+      const squad = await fetchSquadClient();
       setPersistedSquad(squad);
       setCurrentTab("pitch");
       showSuccess("Squad Saved Successfully!");
@@ -249,16 +290,22 @@ export default function SquadPage() {
     try {
        setLoading(true);
        if (persistedSquad) {
-          await supabase.from("user_squads")
+          const { error: deleteError } = await supabase.from("user_squads")
             .delete()
             .eq("id", persistedSquad.id);
+          if (deleteError) {
+            console.error("Squad delete error:", deleteError);
+            showError(`Failed to reset: ${deleteError.message} (code: ${deleteError.code})`);
+            return;
+          }
        }
        setPersistedSquad(null);
        setDraft([]);
        setCurrentTab("market");
        showSuccess("Squad Reset for Testing!");
-    } catch (err) {
-       showError("Failed to reset");
+    } catch (err: any) {
+       console.error("Reset error (full):", err);
+       showError(`Failed to reset: ${err?.message || 'Unknown error'}`);
     } finally {
        setLoading(false);
     }
@@ -491,6 +538,7 @@ export default function SquadPage() {
             onSetCaptain={handleSetCaptain}
             isLocked={!!squadStatus?.locked}
             pointsMap={draftPoints}
+            onError={showError}
           />
         )}
       </div>

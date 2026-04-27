@@ -69,12 +69,13 @@ export default async function HomePage() {
       const playerIds = squad.squad_players?.map((p: any) => p.player_id) || [];
       if (playerIds.length > 0) {
         // Fetch all points for these players from today
-        const today = new Date().toISOString().split('T')[0];
+        const todayISO = new Date();
+        todayISO.setHours(0, 0, 0, 0);
         const { data: livePoints } = await supabase
           .from('player_live_points')
           .select('player_id, points')
           .in('player_id', playerIds)
-          .gte('created_at', today);
+          .gte('created_at', todayISO.toISOString());
 
         if (livePoints) {
           // Map multipliers for easy access
@@ -141,7 +142,7 @@ export default async function HomePage() {
 
   // Fallbacks
   const totalPoints = squadData?.calculatedTotal ?? squadData?.total_points ?? 0;
-  const overallRank = squadData?.overall_rank ? squadData.overall_rank.toLocaleString() : "1,422";
+  const overallRank = squadData?.overall_rank ? squadData.overall_rank.toLocaleString() : "\u2014";
   const teamName = squadData?.team_name || "Botola Masters League";
   const freeTransfers = squadData?.free_transfers ?? 2;
   
@@ -237,6 +238,7 @@ export default async function HomePage() {
           <span className="text-neon text-[10px] font-black tracking-widest uppercase cursor-pointer">View Schedule</span>
         </div>
 
+        {nextFixtureWithLogos?.home_team && nextFixtureWithLogos?.away_team ? (
         <div className="bg-[#121A2B] rounded-[32px] py-7 px-4 border border-white/5 shadow-xl flex justify-around items-center relative overflow-hidden">
           <div className="absolute inset-0 bg-gradient-to-r from-neon/5 to-transparent pointer-events-none opacity-50" />
           
@@ -278,6 +280,12 @@ export default async function HomePage() {
             </span>
           </div>
         </div>
+        ) : (
+          <div className="bg-[#121A2B] rounded-[32px] py-8 px-4 border border-white/5 shadow-xl flex flex-col items-center justify-center gap-2">
+            <span className="text-gray-500 text-[10px] font-black uppercase tracking-widest">No upcoming match scheduled</span>
+            <span className="text-gray-700 text-[9px] font-bold">Check back after the schedule is seeded.</span>
+          </div>
+        )}
       </div>
     </div>
   );

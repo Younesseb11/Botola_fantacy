@@ -34,9 +34,10 @@ interface PitchViewProps {
   onSetCaptain: (playerId: string) => void;
   isLocked: boolean;
   pointsMap?: Record<string, number>;
+  onError?: (msg: string) => void;
 }
 
-export function PitchView({ players, onSwap, onSetCaptain, isLocked, pointsMap = {} }: PitchViewProps) {
+export function PitchView({ players, onSwap, onSetCaptain, isLocked, pointsMap = {}, onError }: PitchViewProps) {
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   const starters = players.filter((p) => p.is_starter);
@@ -71,7 +72,9 @@ export function PitchView({ players, onSwap, onSetCaptain, isLocked, pointsMap =
 
           if (swappingInGK && !bothGKs) {
              // Block the swap (e.g., trying to swap bench GK with a Defender)
-             alert("Only one Goalkeeper allowed in the starting XI!");
+             if (onError) {
+               onError("Only one Goalkeeper allowed in the starting XI!");
+             }
              setSelectedId(null);
              return;
           }
@@ -125,8 +128,8 @@ export function PitchView({ players, onSwap, onSetCaptain, isLocked, pointsMap =
                 onSetCaptain(p.player_id);
               }}
               className={cn(
-                "absolute -bottom-1 -right-1 bg-white/10 hover:bg-neon hover:text-black p-1 rounded-md transition-all z-20",
-                isCaptain ? "text-yellow-500 opacity-100" : "text-white opacity-0 group-hover:opacity-60"
+                "absolute -bottom-1 -right-1 hover:bg-neon hover:text-black p-1 rounded-md transition-all z-20",
+                isCaptain ? "bg-yellow-500/20 text-yellow-500 opacity-100" : "bg-white/10 text-white opacity-40"
               )}
               title="Set as Captain"
             >

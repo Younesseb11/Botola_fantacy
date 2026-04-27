@@ -59,6 +59,15 @@ export async function saveInitialSquad(playerIds: string[]) {
 
   if (!players || players.length !== 15) throw new Error('Invalid squad size')
 
+  // Auto-assign Starters based on position order (GK -> DEF -> MID -> FWD)
+  const posOrder: Record<string, number> = { GK: 0, DEF: 1, MID: 2, FWD: 3 };
+  const sortedPlayers = [...players].sort((a, b) => posOrder[a.position] - posOrder[b.position]);
+  
+  const starters = sortedPlayers.slice(0, 11);
+  const bench = sortedPlayers.slice(11);
+  const starterIds = new Set(starters.map(p => p.id));
+  const captainId = starters[0].id; // Auto-captain the first starter (usually GK)
+
   // Transactionally upsert user_squads
   const { data: squad, error: squadErr } = await supabase
     .from('user_squads')
@@ -68,19 +77,12 @@ export async function saveInitialSquad(playerIds: string[]) {
       formation: '4-4-2',
       team_name: `${user.email?.split('@')[0]}'s Squad`,
       budget_remaining: Number((100.0 - (players.reduce((acc, p) => acc + (Number(p.price) || 0), 0))).toFixed(1)),
+      captain_player_id: captainId,
     }, { onConflict: 'user_id, gameweek' })
     .select()
     .single()
 
   if (squadErr) throw new Error(squadErr.message)
-
-  // Auto-assign Starters based on position order (GK -> DEF -> MID -> FWD)
-  const posOrder: Record<string, number> = { GK: 0, DEF: 1, MID: 2, FWD: 3 };
-  const sortedPlayers = [...players].sort((a, b) => posOrder[a.position] - posOrder[b.position]);
-  
-  const starters = sortedPlayers.slice(0, 11);
-  const bench = sortedPlayers.slice(11);
-  const starterIds = new Set(starters.map(p => p.id));
 
   // Prepare squad_players rows
   const squadPlayers = sortedPlayers.map(p => {

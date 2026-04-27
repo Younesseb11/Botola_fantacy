@@ -37,11 +37,14 @@ interface Fixture {
 interface LiveEvent {
   id: string
   player_id: string
+  player_name: string
+  team_name: string
   event_type: string
   points: number
   minute: string
   match_home_team: string
   match_away_team: string
+  match_side: 'home' | 'away' | null
   created_at: string
 }
 
@@ -67,6 +70,28 @@ interface LivePointsClientProps {
   initialEvents: LiveEvent[]
 }
 
+// --- Helpers ---
+
+/**
+ * Normalize a team name for fuzzy comparison.
+ * Strips common suffixes and lowercases for reliable matching
+ * between Flashscore names ("Wydad Athletic") and DB names ("Wydad AC").
+ */
+function normalizeTeamName(name: string): string {
+  return name
+    .trim()
+    .toLowerCase()
+    .replace(/\b(ac|athletic|sc|fc|club|cf)\b/gi, '')
+    .replace(/\s+/g, ' ')
+    .trim()
+}
+
+function teamsMatch(a: string, b: string): boolean {
+  const na = normalizeTeamName(a)
+  const nb = normalizeTeamName(b)
+  return na === nb || na.includes(nb) || nb.includes(na)
+}
+
 // --- Icons Helper ---
 const EventIcon = ({ type }: { type: string }) => {
   switch (type) {
@@ -88,6 +113,20 @@ export function LivePointsClient({
   const [events, setEvents] = useState<LiveEvent[]>(initialEvents)
   const [highlightedPlayers, setHighlightedPlayers] = useState<Set<string>>(new Set())
 
+  // Stable set of squad player IDs — avoids stale closure in realtime callback
+  const squadPlayerIds = useMemo(() => {
+    return new Set<string>(
+      initialSquad?.squad_players?.map((sp: any) => sp.player_id).filter(Boolean) || []
+    )
+  }, [initialSquad])
+
+  // Stable set of squad player names — for fallback matching when player_id is null
+  const squadPlayerNames = useMemo(() => {
+    return new Set<string>(
+      initialSquad?.squad_players?.map((sp: any) => sp.player?.name?.toLowerCase()).filter(Boolean) || []
+    )
+  }, [initialSquad])
+
   // --- Realtime Subscription ---
   useEffect(() => {
     const channel = supabase
@@ -100,14 +139,18 @@ export function LivePointsClient({
         const newEvent = payload.new as LiveEvent
         setEvents(prev => [newEvent, ...prev])
 
-        // Trigger glow for user's squad
-        const isUserPlayer = initialSquad?.squad_players?.some((sp: any) => sp.player_id === newEvent.player_id)
+        // Trigger glow for user's squad — use stable sets instead of initialSquad closure
+        const isUserPlayer = 
+          (newEvent.player_id && squadPlayerIds.has(newEvent.player_id)) ||
+          (newEvent.player_name && squadPlayerNames.has(newEvent.player_name.toLowerCase()))
+
         if (isUserPlayer) {
-          setHighlightedPlayers(prev => new Set(prev).add(newEvent.player_id))
+          const highlightKey = newEvent.player_id || newEvent.player_name
+          setHighlightedPlayers(prev => new Set(prev).add(highlightKey))
           setTimeout(() => {
             setHighlightedPlayers(prev => {
               const next = new Set(prev)
-              next.delete(newEvent.player_id)
+              next.delete(highlightKey)
               return next
             })
           }, 3000)
@@ -116,24 +159,22 @@ export function LivePointsClient({
       .subscribe()
 
     return () => { supabase.removeChannel(channel) }
-  }, [initialSquad])
+  }, [squadPlayerIds, squadPlayerNames])
 
   // --- Derived State: Active Match logic ---
   const activeMatch = useMemo(() => {
     if (initialLiveMatches.length === 0) return null
-
-    // Count squad players per live match
-    const squadPlayerIds = new Set(initialSquad?.squad_players?.map((sp: any) => sp.player_id) || [])
     
     const matchesWithCounts = initialLiveMatches.map(m => {
-      // Logic: A match "contains" a player if the event stream or lineups say so.
-      // For simplicity, we check if team short names in squad match the fixture teams.
-      const homeTeam = m.home?.short_name
-      const awayTeam = m.away?.short_name
+      // Count squad players whose team matches this fixture's home or away.
+      // .trim() both sides to handle trailing spaces in seed data (e.g. "IR ").
+      const homeTeam = (m.home?.short_name || '').trim()
+      const awayTeam = (m.away?.short_name || '').trim()
       
-      const count = initialSquad?.squad_players?.filter((sp: any) => 
-        sp.player.team.short_name === homeTeam || sp.player.team.short_name === awayTeam
-      ).length || 0
+      const count = initialSquad?.squad_players?.filter((sp: any) => {
+        const spTeam = (sp.player?.team?.short_name || '').trim()
+        return spTeam === homeTeam || spTeam === awayTeam
+      }).length || 0
 
       return { ...m, playerCount: count }
     })
@@ -152,22 +193,44 @@ export function LivePointsClient({
     const scores: Record<string, { home: number; away: number }> = {}
     
     initialLiveMatches.forEach(m => {
-      const matchEvents = events.filter(e => 
-        (e.match_home_team === m.home?.name && e.match_away_team === m.away?.name) ||
-        (e.match_home_team === m.home?.short_name && e.match_away_team === m.away?.short_name)
-      )
+      const homeName = m.home?.name || ''
+      const awayName = m.away?.name || ''
+      const homeShort = (m.home?.short_name || '').trim()
+      const awayShort = (m.away?.short_name || '').trim()
+
+      // Match events to this fixture using normalized team name comparison
+      const matchEvents = events.filter(e => {
+        const eHome = e.match_home_team || ''
+        const eAway = e.match_away_team || ''
+        return (
+          (teamsMatch(eHome, homeName) && teamsMatch(eAway, awayName)) ||
+          (teamsMatch(eHome, homeShort) && teamsMatch(eAway, awayShort))
+        )
+      })
 
       let homeScore = 0
       let awayScore = 0
 
       matchEvents.forEach(e => {
+        // Prefer match_side from DB (set by scraper), fall back to fuzzy team comparison
+        let isHomeSide: boolean
+        let isAwaySide: boolean
+        if (e.match_side) {
+          isHomeSide = e.match_side === 'home'
+          isAwaySide = e.match_side === 'away'
+        } else {
+          const eventTeam = e.team_name || ''
+          isHomeSide = teamsMatch(eventTeam, homeName) || teamsMatch(eventTeam, homeShort)
+          isAwaySide = teamsMatch(eventTeam, awayName) || teamsMatch(eventTeam, awayShort)
+        }
+
         if (e.event_type === 'goal') {
-          if (e.match_home_team === m.home?.name || e.match_home_team === m.home?.short_name) homeScore++
-          else awayScore++
+          if (isHomeSide) homeScore++
+          else if (isAwaySide) awayScore++
         } else if (e.event_type === 'own_goal') {
-          // If home team scores an OG, away team gets a goal
-          if (e.match_home_team === m.home?.name || e.match_home_team === m.home?.short_name) awayScore++
-          else homeScore++
+          // OG by home player = away goal, and vice versa
+          if (isHomeSide) awayScore++
+          else if (isAwaySide) homeScore++
         }
       })
 
@@ -181,7 +244,17 @@ export function LivePointsClient({
   const playerPoints = useMemo(() => {
     const pts: Record<string, number> = {}
     initialSquad?.squad_players?.forEach((sp: any) => {
-      const playerEvents = events.filter(e => e.player_id === sp.player_id)
+      const spName = (sp.player?.name || '').toLowerCase()
+      const playerEvents = events.filter(e => {
+        // Primary: match by player_id when available
+        if (e.player_id && e.player_id === sp.player_id) return true
+        // Fallback: match by player_name (handles null player_id from failed fuzzy match)
+        if (e.player_name && spName) {
+          const eName = e.player_name.toLowerCase()
+          return eName.includes(spName) || spName.includes(eName)
+        }
+        return false
+      })
       const total = playerEvents.reduce((sum, e) => sum + (e.points * sp.points_multiplier), 0)
       pts[sp.player_id] = total
     })
@@ -299,8 +372,13 @@ export function LivePointsClient({
                   <span className="text-[10px] font-black text-neon">{event.minute}</span>
                 </div>
                 <div className="flex flex-col">
-                  <span className="text-[11px] font-bold text-white truncate">{event.player_id ? 'Matched Player' : 'Unknown Player'}</span>
-                  <span className="text-[9px] font-black text-gray-500 uppercase tracking-tight">{event.event_type.replace('_', ' ')}</span>
+                  <span className="text-[11px] font-bold text-white truncate">{event.player_name || 'Unknown Player'}</span>
+                  <div className="flex items-center gap-1">
+                    <span className="text-[9px] font-black text-gray-500 uppercase tracking-tight">{event.event_type.replace('_', ' ')}</span>
+                    {event.team_name && (
+                      <span className="text-[8px] font-bold text-gray-600">· {event.team_name}</span>
+                    )}
+                  </div>
                 </div>
                 {event.points > 0 && (
                   <div className="absolute top-2 right-2 flex items-center gap-0.5">
@@ -344,7 +422,7 @@ export function LivePointsClient({
                   </div>
                   {posPlayers.map((sp: SquadPlayer) => {
                     const points = playerPoints[sp.player_id] || 0
-                    const isHighlighted = highlightedPlayers.has(sp.player_id)
+                    const isHighlighted = highlightedPlayers.has(sp.player_id) || highlightedPlayers.has(sp.player?.name)
                     const isCaptain = sp.points_multiplier > 1
 
                     return (
