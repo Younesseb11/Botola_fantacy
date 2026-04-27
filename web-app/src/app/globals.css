@@ -16,4 +16,14 @@ body {
   .text-balance {
     text-wrap: balance;
   }
+  
+  @keyframes point-glow {
+    0% { background-color: transparent; }
+    20% { background-color: rgba(52, 211, 153, 0.2); } /* emerald-400 with opacity */
+    100% { background-color: transparent; }
+  }
+
+  .animate-point-glow {
+    animation: point-glow 2s ease-out forwards;
+  }
 }

@@ -115,13 +115,29 @@ export default async function HomePage() {
   }
 
   // 3. Fetch next fixture (Global)
-  let nextFixture = null;
+  let nextFixtureWithLogos = null;
   const { data: fixture } = await supabase
     .from('next_fixture')
     .select('*')
     .eq('id', 1)
     .single();
-  if (fixture) nextFixture = fixture;
+    
+  if (fixture) {
+    // Fetch logos for these teams
+    const { data: teamLogos } = await supabase
+      .from('teams')
+      .select('name, logo_url')
+      .in('name', [fixture.home_team, fixture.away_team]);
+
+    const logoMap: Record<string, string | null> = {};
+    teamLogos?.forEach(t => { logoMap[t.name] = t.logo_url; });
+
+    nextFixtureWithLogos = {
+      ...fixture,
+      home_logo: logoMap[fixture.home_team],
+      away_logo: logoMap[fixture.away_team]
+    };
+  }
 
   // Fallbacks
   const totalPoints = squadData?.calculatedTotal ?? squadData?.total_points ?? 0;
@@ -216,7 +232,7 @@ export default async function HomePage() {
 
       {/* Next Match Section */}
       <div className="mt-2 flex flex-col gap-3">
-        <div className="flex justify-between items-end px-1">
+        <div className="flex justify-between items-end px-2">
           <h3 className="text-white font-black text-lg uppercase tracking-tighter">Next Match</h3>
           <span className="text-neon text-[10px] font-black tracking-widest uppercase cursor-pointer">View Schedule</span>
         </div>
@@ -226,10 +242,16 @@ export default async function HomePage() {
           
           {/* Home Team */}
           <div className="flex flex-col items-center gap-3 w-20 z-10">
-            <div className="w-14 h-14 bg-[#1A2235] rounded-full border border-white/10 flex items-center justify-center p-2 shadow-inner">
-               <div className="w-full h-full bg-gradient-to-tr from-red-600 to-red-400 rounded-full" />
+            <div className="w-16 h-16 bg-[#1A2235] rounded-full border border-white/10 flex items-center justify-center p-2 shadow-inner overflow-hidden">
+               {nextFixtureWithLogos?.home_logo ? (
+                 <img src={nextFixtureWithLogos.home_logo} alt="" className="w-full h-full object-contain" />
+               ) : (
+                 <div className="w-full h-full bg-gradient-to-tr from-gray-700 to-gray-500 rounded-full" />
+               )}
             </div>
-            <span className="text-white font-black text-[11px] uppercase tracking-widest text-center">{getAbbr(nextFixture?.home_team)}</span>
+            <span className="text-white font-black text-[11px] uppercase tracking-widest text-center leading-tight h-8 flex items-center">
+              {getAbbr(nextFixtureWithLogos?.home_team)}
+            </span>
           </div>
 
           {/* VS info */}
@@ -238,20 +260,25 @@ export default async function HomePage() {
                <span className="text-white font-black text-xs">VS</span>
             </div>
             <span className="text-neon text-[9px] font-black tracking-widest uppercase mt-2">
-              {formatKickoff(nextFixture?.kickoff_time)}
+              {formatKickoff(nextFixtureWithLogos?.kickoff_time)}
             </span>
           </div>
 
           {/* Away Team */}
           <div className="flex flex-col items-center gap-3 w-20 z-10">
-            <div className="w-14 h-14 bg-[#1A2235] rounded-full border border-white/10 flex items-center justify-center p-2 shadow-inner">
-               <div className="w-full h-full bg-gradient-to-tr from-red-700 to-white rounded-full bg-clip-content border-2 border-red-700 border-dashed" />
+            <div className="w-16 h-16 bg-[#1A2235] rounded-full border border-white/10 flex items-center justify-center p-2 shadow-inner overflow-hidden">
+               {nextFixtureWithLogos?.away_logo ? (
+                 <img src={nextFixtureWithLogos.away_logo} alt="" className="w-full h-full object-contain" />
+               ) : (
+                 <div className="w-full h-full bg-gradient-to-tr from-gray-700 to-gray-500 rounded-full" />
+               )}
             </div>
-            <span className="text-white font-black text-[11px] uppercase tracking-widest text-center">{getAbbr(nextFixture?.away_team)}</span>
+            <span className="text-white font-black text-[11px] uppercase tracking-widest text-center leading-tight h-8 flex items-center">
+              {getAbbr(nextFixtureWithLogos?.away_team)}
+            </span>
           </div>
         </div>
       </div>
-
     </div>
   );
 }

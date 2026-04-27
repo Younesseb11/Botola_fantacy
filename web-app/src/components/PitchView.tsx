@@ -13,7 +13,10 @@ interface Player {
   id: string;
   name: string;
   position: string;
-  team?: { short_name: string };
+  team?: { 
+    short_name: string;
+    logo_url?: string | null;
+  };
 }
 
 interface SquadPlayer {
@@ -86,6 +89,7 @@ export function PitchView({ players, onSwap, onSetCaptain, isLocked, pointsMap =
     const isSelected = selectedId === p.player_id;
     const isCaptain = p.points_multiplier > 1;
     const teamName = p.player.team?.short_name || "TEAM";
+    const teamLogo = p.player.team?.logo_url;
 
     return (
       <div 
@@ -136,6 +140,9 @@ export function PitchView({ players, onSwap, onSetCaptain, isLocked, pointsMap =
             {p.player.name.split(' ').pop()}
           </span>
           <div className="flex items-center gap-1">
+            {teamLogo && (
+              <img src={teamLogo} alt="" className="w-2.5 h-2.5 object-contain opacity-70" />
+            )}
             <span className="text-[8px] font-black text-neon/60 uppercase">
                {teamName}
             </span>

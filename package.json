@@ -1,0 +1,16 @@
+{
+  "name": "botola-fantasy-root",
+  "private": true,
+  "workspaces": [
+    "Scrapper",
+    "web-app"
+  ],
+  "scripts": {
+    "dev:scrapper": "npm run start --workspace=Scrapper",
+    "scrapper:test": "npm run test:historical --workspace=Scrapper",
+    "scrapper:check-schedule": "npm run check-schedule --workspace=Scrapper",
+    "scrapper:seed-fixtures": "npm run seed-fixtures --workspace=Scrapper",
+    "dev:web": "npm run dev --workspace=web-app",
+    "install-all": "npm install && cd Scrapper && pip install -r requirements.txt"
+  }
+}

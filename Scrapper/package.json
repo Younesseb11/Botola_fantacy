@@ -1,0 +1,11 @@
+{
+  "name": "scrapper",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "python live.py",
+    "test:historical": "python test_historical_match.py",
+    "check-schedule": "python check_schedule.py",
+    "seed-fixtures": "python seed_fixtures.py"
+  }
+}

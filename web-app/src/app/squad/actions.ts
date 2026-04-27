@@ -167,7 +167,7 @@ export async function fetchUserSquad() {
         *,
         player:players (
           *,
-          team:teams (short_name)
+          team:teams (short_name, logo_url)
         )
       )
     `)

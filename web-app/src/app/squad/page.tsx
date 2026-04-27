@@ -42,13 +42,14 @@ interface Team {
   id: string;
   name?: string;
   short_name: string;
+  logo_url?: string | null;
 }
 
 export default function SquadPage() {
   // Data State
   const [players, setPlayers] = useState<Player[]>([]);
   const [teams, setTeams] = useState<Team[]>([]);
-  const [teamMap, setTeamMap] = useState<Record<string, string>>({});
+  const [teamMap, setTeamMap] = useState<Record<string, { short: string, logo: string | null }>>({});
   const [loading, setLoading] = useState(true);
   const [saving, setSaving] = useState(false);
 
@@ -78,10 +79,13 @@ export default function SquadPage() {
         setLoading(true);
         
         // 1. Fetch metadata
-        const { data: teamsData } = await supabase.from("teams").select("id, name, short_name").order('name');
+        const { data: teamsData } = await supabase.from("teams").select("id, name, short_name, logo_url").order('name');
         if (teamsData) setTeams(teamsData);
-        const mapping: Record<string, string> = {};
-        teamsData?.forEach((t: Team) => { mapping[t.id] = t.short_name; });
+        
+        const mapping: Record<string, { short: string, logo: string | null }> = {};
+        teamsData?.forEach((t: Team) => { 
+          mapping[t.id] = { short: t.short_name, logo: t.logo_url || null }; 
+        });
         setTeamMap(mapping);
 
         const { data: playersData } = await supabase.from("players").select("id, name, team_id, position, price");
@@ -408,7 +412,12 @@ export default function SquadPage() {
                           <span className="text-[10px] font-black text-white/40 bg-white/5 px-2 py-0.5 rounded uppercase">{p.position}</span>
                           <div className="flex flex-col">
                             <span className="text-white font-bold group-hover:text-neon transition-colors">{p.name}</span>
-                            <span className="text-gray-500 text-[10px] font-black uppercase tracking-widest">{teamMap[p.team_id]}</span>
+                            <div className="flex items-center gap-1">
+                               {teamMap[p.team_id]?.logo && (
+                                 <img src={teamMap[p.team_id].logo!} alt="" className="w-3 h-3 object-contain opacity-60" />
+                               )}
+                               <span className="text-gray-500 text-[10px] font-black uppercase tracking-widest">{teamMap[p.team_id]?.short}</span>
+                            </div>
                           </div>
                        </div>
                        <div className="flex items-center gap-4">
@@ -440,10 +449,13 @@ export default function SquadPage() {
                            </div>
                            <div className="flex flex-col items-center mt-1">
                               <span className="text-[9px] font-black text-white truncate max-w-[50px]">{p.name.split(' ').pop()}</span>
-                              <div className="flex items-center gap-1">
-                                 <span className="text-[7px] font-black text-gray-500 uppercase">{teamMap[p.team_id]}</span>
-                                 <span className="text-[7px] font-black text-neon">{draftPoints[p.id] || 0}P</span>
-                              </div>
+                               <div className="flex items-center gap-1">
+                                  {teamMap[p.team_id]?.logo && (
+                                    <img src={teamMap[p.team_id].logo!} alt="" className="w-2 h-2 object-contain opacity-60" />
+                                  )}
+                                  <span className="text-[7px] font-black text-gray-500 uppercase">{teamMap[p.team_id]?.short}</span>
+                                  <span className="text-[7px] font-black text-neon">{draftPoints[p.id] || 0}P</span>
+                               </div>
                            </div>
                         </div>
                       ))}
