@@ -89,7 +89,7 @@ def supa_insert(table, rows):
 def supa_delete_all(table):
     """Deletes all rows in the table (requires service-role key)."""
     r = requests.delete(
-        f"{SUPABASE_URL}/rest/v1/{table}?id=neq.0", # dummy filter to allow delete
+        f"{SUPABASE_URL}/rest/v1/{table}?id=not.is.null", # dummy filter to allow delete
         headers=_h(), timeout=15,
     )
     if r.status_code not in (200, 204):
@@ -142,6 +142,49 @@ def _find_player(name, team_hint=""):
 # ===========================================================================
 #  SCRAPER
 # ===========================================================================
+
+def scrape_lineups(page, match_url):
+    """
+    Navigate to the Lineups tab by clicking it and extract the starting 11 for both teams.
+    """
+    print(f"[*] Extracting lineups for {match_url} ...")
+    try:
+        # Click the lineups tab directly instead of navigating to a URL
+        # which avoids the ?mid= issues.
+        page.click('a[href*="/lineups"]', timeout=5000)
+        page.wait_for_timeout(3000)
+    except Exception as e:
+        print(f"  [!] Could not click lineups tab: {e}")
+        return None
+
+    return page.evaluate(r"""
+    () => {
+        const starters = { home: [], away: [] };
+        
+        // Find all non-empty links that point to a player profile
+        const playerLinks = Array.from(document.querySelectorAll('a'))
+            .filter(a => a.href && a.href.includes('/player/'))
+            .map(a => a.textContent.trim())
+            .filter(t => t.length > 0);
+            
+        if (playerLinks.length >= 22) {
+            starters.home = playerLinks.slice(0, 11);
+            starters.away = playerLinks.slice(11, 22);
+        } else {
+            // Fallback for older DOM structures
+            const nameWrappers = Array.from(document.querySelectorAll('[class*="nameWrapper"]'))
+                .map(el => el.textContent.trim())
+                .filter(t => t.length > 0);
+                
+            if (nameWrappers.length >= 22) {
+                starters.home = nameWrappers.slice(0, 11);
+                starters.away = nameWrappers.slice(11, 22);
+            }
+        }
+        
+        return starters;
+    }
+    """)
 
 def scrape_match_data(page, url):
     """Scrapes team names and all match events."""
@@ -238,7 +281,9 @@ def run_simulation(match_url, clear_table=False):
         browser = pw.chromium.launch(headless=True)
         page = browser.new_page()
         
+        starters_dict = scrape_lineups(page, match_url)
         teams, events = scrape_match_data(page, match_url)
+        
         browser.close()
 
     if not events:
@@ -250,6 +295,80 @@ def run_simulation(match_url, clear_table=False):
     print("-" * 60)
 
     today_iso = date.today().isoformat()
+
+    # --- KICKOFF: Ensure Starters get Appearance Points ---
+    print(f"[*] Simulating Kickoff... Pushing appearance points for starting XI.")
+    kickoff_rows = []
+    
+    if starters_dict and (starters_dict.get("home") or starters_dict.get("away")):
+        for side_key, team_name in [("home", teams["home"]), ("away", teams["away"])]:
+            for p_name in starters_dict.get(side_key, []):
+                player_p = _find_player(p_name, team_name)
+                pid = player_p["id"] if player_p else None
+                
+                kickoff_rows.append({
+                    "player_name":     p_name,
+                    "player_id":       pid,
+                    "team_name":       team_name,
+                    "event_type":      "appearance",
+                    "points":          PTS["appearance"],
+                    "minute":          "0'",
+                    "match_home_team": teams["home"],
+                    "match_away_team": teams["away"],
+                    "match_date":      today_iso,
+                    "match_side":      side_key,
+                })
+    else:
+        print("  [!] Lineup scrape failed or empty. Falling back to event extraction...")
+        # Fallback if lineups tab failed
+        all_players = set()
+        subbed_in = set()
+        player_to_team = {}
+        
+        for ev in events:
+            t = ev.get("team", "")
+            if ev.get("player"):
+                all_players.add(ev["player"])
+                player_to_team[ev["player"]] = t
+            if ev.get("assist"):
+                all_players.add(ev["assist"])
+                player_to_team[ev["assist"]] = t
+            if ev.get("player_out"):
+                all_players.add(ev["player_out"])
+                player_to_team[ev["player_out"]] = t
+                
+            if ev.get("event_type") == "substitution" and ev.get("player"):
+                subbed_in.add(ev["player"])
+                
+        fallback_starters = all_players - subbed_in
+        for p_name in fallback_starters:
+            t_name = player_to_team.get(p_name, "")
+            player_p = _find_player(p_name, t_name)
+            pid = player_p["id"] if player_p else None
+            
+            side = None
+            if t_name == teams["home"]: side = "home"
+            elif t_name == teams["away"]: side = "away"
+            
+            kickoff_rows.append({
+                "player_name":     p_name,
+                "player_id":       pid,
+                "team_name":       t_name,
+                "event_type":      "appearance",
+                "points":          PTS["appearance"],
+                "minute":          "0'",
+                "match_home_team": teams["home"],
+                "match_away_team": teams["away"],
+                "match_date":      today_iso,
+                "match_side":      side,
+            })
+
+    if kickoff_rows:
+        res = supa_insert("player_live_points", kickoff_rows)
+        if res:
+            print(f"    [OK] Pushed +{sum(r['points'] for r in kickoff_rows)} total points for {len(kickoff_rows)} starters.")
+        time.sleep(2)
+    # --------------------------------------------------------
 
     for i, ev in enumerate(events, 1):
         player_p = _find_player(ev["player"], ev["team"])
@@ -266,6 +385,12 @@ def run_simulation(match_url, clear_table=False):
         else:
             pts = PTS.get(etype, 0)
 
+        # Determine match side for this event
+        ev_team = ev["team"]
+        side = None
+        if ev_team == teams["home"]: side = "home"
+        elif ev_team == teams["away"]: side = "away"
+
         rows_to_push = []
         rows_to_push.append({
             "player_name":     ev["player"],
@@ -277,6 +402,7 @@ def run_simulation(match_url, clear_table=False):
             "match_home_team": teams["home"],
             "match_away_team": teams["away"],
             "match_date":      today_iso,
+            "match_side":      side,
         })
 
         # Add assist if present
@@ -293,6 +419,7 @@ def run_simulation(match_url, clear_table=False):
                 "match_home_team": teams["home"],
                 "match_away_team": teams["away"],
                 "match_date":      today_iso,
+                "match_side":      side,
             })
 
         # Push to Supabase
