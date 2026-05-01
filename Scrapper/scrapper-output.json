@@ -1,0 +1,218 @@
+{
+  "last_updated": "2026-04-29T21:46:54.760947+01:00",
+  "match": "Maghreb Fez vs Hassania Agadir",
+  "players": {
+    "Hrila I. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Ounajem M. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Katiba M. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Bakhkhach M. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Chihab S.(G)(C) (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Ait Allal H. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "El Jabali D. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Khorsa S. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Ouhrou M. (Maghreb Fez)": {
+      "total": 0,
+      "events": [
+        "appearance (1 pts)",
+        "yellow_card @ 67' (-1 pts)"
+      ]
+    },
+    "Harmach A. (Maghreb Fez)": {
+      "total": 6,
+      "events": [
+        "appearance (1 pts)",
+        "goal @ 30' (5 pts)"
+      ]
+    },
+    "Noureddine O. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Brika A. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Tahiri A. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Allouch S. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Benjdida S. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Abyir B.(G)(C) (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "El Amrani S. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Beye A. (Hassania Agadir)": {
+      "total": -3,
+      "events": [
+        "appearance (1 pts)",
+        "yellow_card @ 14' (-1 pts)",
+        "red_card @ 62' (-3 pts)"
+      ]
+    },
+    "Bahsain M. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Tarrazi A. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Akoumi M. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Tachtach J. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "appearance (1 pts)"
+      ]
+    },
+    "Hrila I. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "substitution @ 39' (1 pts)"
+      ]
+    },
+    "Ounajem M. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "substitution @ 61' (1 pts)"
+      ]
+    },
+    "Katiba M. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "substitution @ 61' (1 pts)"
+      ]
+    },
+    "Bakhkhach M. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "substitution @ 61' (1 pts)"
+      ]
+    },
+    "Benjdida S. (Maghreb Fez)": {
+      "total": 11,
+      "events": [
+        "goal @ 71' (4 pts)",
+        "goal @ 76' (4 pts)",
+        "assist @ 78' (3 pts)"
+      ]
+    },
+    "Tahiri A. (Maghreb Fez)": {
+      "total": 6,
+      "events": [
+        "assist @ 71' (3 pts)",
+        "assist @ 76' (3 pts)"
+      ]
+    },
+    "Yamga K. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "substitution @ 77' (1 pts)"
+      ]
+    },
+    "Oudrhiri A. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "substitution @ 77' (1 pts)"
+      ]
+    },
+    "Hamza A. (Maghreb Fez)": {
+      "total": 6,
+      "events": [
+        "substitution @ 77' (1 pts)",
+        "goal @ 78' (5 pts)"
+      ]
+    },
+    "Hamadi Z. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "substitution @ 81' (1 pts)"
+      ]
+    },
+    "Moumadi H. (Hassania Agadir)": {
+      "total": 1,
+      "events": [
+        "substitution @ 81' (1 pts)"
+      ]
+    },
+    "Brija E. (Maghreb Fez)": {
+      "total": 1,
+      "events": [
+        "substitution @ 86' (1 pts)"
+      ]
+    }
+  }
+}

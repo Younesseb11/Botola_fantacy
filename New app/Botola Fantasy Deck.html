@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Botola Pro Fantasy — Screens</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; background: #06070D; }
+  body { font-family: 'Space Grotesk','Inter',-apple-system,system-ui,sans-serif; color: #fff; }
+  section.slide {
+    width: 1920px; height: 1080px;
+    background: linear-gradient(135deg, #06070D 0%, #0B0E1A 100%);
+    position: relative; overflow: hidden;
+    display: flex; align-items: center;
+    padding: 0 80px; gap: 60px;
+  }
+  .slide-bg-grid {
+    position: absolute; inset: 0;
+    background-image:
+      radial-gradient(circle at 20% 30%, rgba(0,255,135,0.08) 0%, transparent 50%),
+      radial-gradient(circle at 80% 70%, rgba(4,245,255,0.06) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .slide-meta {
+    flex: 1; max-width: 720px; position: relative; z-index: 2;
+  }
+  .slide-kicker {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 16px; font-weight: 700; letter-spacing: 3px;
+    color: #00FF87; text-transform: uppercase; margin: 0 0 16px;
+  }
+  .slide-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 84px; font-weight: 800; letter-spacing: -3px;
+    color: #F4F6FF; line-height: 0.95; margin: 0 0 24px;
+  }
+  .slide-title em {
+    font-style: normal;
+    background: linear-gradient(120deg, #00FF87, #04F5FF);
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+  }
+  .slide-desc {
+    font-family: 'Inter', sans-serif;
+    font-size: 22px; font-weight: 400; color: #A6ADD0;
+    line-height: 1.55; margin: 0 0 32px; max-width: 620px;
+  }
+  .slide-features {
+    display: flex; flex-direction: column; gap: 14px;
+  }
+  .slide-feature {
+    display: flex; align-items: flex-start; gap: 14px;
+    font-family: 'Inter', sans-serif; font-size: 17px;
+    color: #F4F6FF; line-height: 1.4;
+  }
+  .feature-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: #00FF87; flex-shrink: 0; margin-top: 8px;
+    box-shadow: 0 0 12px #00FF87;
+  }
+  .feature-label { color: #A6ADD0; font-weight: 400; }
+  .feature-label strong { color: #F4F6FF; font-weight: 700; }
+  .slide-counter {
+    position: absolute; top: 60px; right: 80px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 14px; font-weight: 600; color: #6B7299;
+    letter-spacing: 2px;
+  }
+  .slide-brand {
+    position: absolute; bottom: 60px; left: 80px;
+    display: flex; align-items: center; gap: 12px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 16px; font-weight: 700; color: #A6ADD0;
+    letter-spacing: 0.5px;
+  }
+  .brand-mark {
+    width: 36px; height: 36px; border-radius: 10px;
+    background: linear-gradient(135deg, #00FF87, #04F5FF);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 16px; font-weight: 800; color: #000;
+  }
+  .slide-phone-wrap {
+    flex: 0 0 auto; position: relative; z-index: 2;
+    display: flex; align-items: center; justify-content: center;
+  }
+  .phone-frame {
+    width: 460px; height: 920px;
+    border-radius: 56px; padding: 14px;
+    background: linear-gradient(160deg, #2a2d3a, #0a0a14);
+    box-shadow:
+      0 60px 120px rgba(0,0,0,0.6),
+      0 0 0 2px rgba(255,255,255,0.06),
+      0 0 80px -10px rgba(0,255,135,0.2);
+    position: relative;
+  }
+  .phone-screen {
+    width: 100%; height: 100%; border-radius: 44px;
+    overflow: hidden; background: #06070D; position: relative;
+  }
+  .phone-screen iframe {
+    width: 100%; height: 100%; border: 0; display: block;
+  }
+  /* Title slide */
+  .slide-title-page {
+    justify-content: center; flex-direction: column; text-align: center;
+    gap: 0;
+  }
+  .slide-title-page .slide-title {
+    font-size: 140px; letter-spacing: -5px;
+  }
+  .slide-title-page .slide-desc {
+    font-size: 28px; max-width: none; margin-top: 24px;
+  }
+  .title-crests {
+    display: flex; gap: 18px; justify-content: center; margin-bottom: 40px;
+  }
+  .title-crest {
+    width: 64px; height: 64px; border-radius: 18px;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 32px; font-weight: 800; color: #fff;
+    box-shadow: 0 8px 24px rgba(0,0,0,0.4);
+  }
+</style>
+<script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+<script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+<script src="deck-stage.js"></script>
+</head>
+<body>
+<deck-stage>
+
+<!-- Slide 1: Title -->
+<section class="slide slide-title-page" data-screen-label="01 Title">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">01 / 09</div>
+  <div style="position:relative; z-index:2;">
+    <div class="title-crests">
+      <div class="title-crest" style="background:linear-gradient(155deg,#C8102E,#8B0B1F)">W</div>
+      <div class="title-crest" style="background:linear-gradient(155deg,#0E8C4A,#0A6635)">R</div>
+      <div class="title-crest" style="background:linear-gradient(155deg,#1B4332,#0F2A20)">F</div>
+      <div class="title-crest" style="background:linear-gradient(155deg,#FF6B1A,#C45414)">B</div>
+    </div>
+    <p class="slide-kicker">⚽ Botola Pro · 2025/26</p>
+    <h1 class="slide-title">Botola <em>Fantasy</em></h1>
+    <p class="slide-desc">A modern fantasy football app for Morocco's top flight.<br/>Hi-fi mobile concept · Dark UI · 8 core screens</p>
+  </div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+<!-- Generic content slide template repeats for each screen -->
+
+<!-- 2: Onboarding -->
+<section class="slide" data-screen-label="02 Onboarding">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">02 / 09</div>
+  <div class="slide-meta">
+    <p class="slide-kicker">Screen 01 · Entry</p>
+    <h2 class="slide-title">First <em>impression.</em></h2>
+    <p class="slide-desc">A bold landing screen builds anticipation before the user has even picked a player. Floating club crests orbit the brand mark and the typographic hero invites managers in.</p>
+    <div class="slide-features">
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label"><strong>Concentric brand mark</strong> with satellite club crests</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Gradient CTA (<strong>lime → cyan</strong>) anchors the bottom</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Sign-in path for returning managers</span></div>
+    </div>
+  </div>
+  <div class="slide-phone-wrap"><div class="phone-frame"><div class="phone-screen"><iframe src="Botola Fantasy.html#onboarding" data-route="onboarding"></iframe></div></div></div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+<!-- 3: Home -->
+<section class="slide" data-screen-label="03 Home">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">03 / 09</div>
+  <div class="slide-meta">
+    <p class="slide-kicker">Screen 02 · Dashboard</p>
+    <h2 class="slide-title">Home <em>at a glance.</em></h2>
+    <p class="slide-desc">Everything that matters in one scroll: live gameweek points, your captain, the upcoming derby, mini-leagues, and top performers in the market.</p>
+    <div class="slide-features">
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label"><strong>Live GW card</strong> · points, total, rank</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label"><strong>Captain hero</strong> with club-tinted background</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label"><strong>Derby boost banner</strong> · ×1.5 chip ready to deploy</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Friends leagues + market shortcuts</span></div>
+    </div>
+  </div>
+  <div class="slide-phone-wrap"><div class="phone-frame"><div class="phone-screen"><iframe src="Botola Fantasy.html#home" data-route="home"></iframe></div></div></div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+<!-- 4: Pick Team -->
+<section class="slide" data-screen-label="04 Pick Team">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">04 / 09</div>
+  <div class="slide-meta">
+    <p class="slide-kicker">Screen 03 · Signature</p>
+    <h2 class="slide-title">Pick your <em>Atlas Eleven.</em></h2>
+    <p class="slide-desc">The hero screen. A 2D top-down pitch shows your starting XI with club shirts, captain badges and live points. A single tap surfaces the full action sheet.</p>
+    <div class="slide-features">
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Three views · <strong>2D · 3D perspective · List</strong></span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Tap a player · <strong>captain · vice · sub · transfer</strong></span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Formation picker · 7 options from 3-4-3 to 5-4-1</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Chips drawer · including <strong>Derby Boost</strong> + <strong>Coach Mode</strong></span></div>
+    </div>
+  </div>
+  <div class="slide-phone-wrap"><div class="phone-frame"><div class="phone-screen"><iframe src="Botola Fantasy.html#pick" data-route="pick"></iframe></div></div></div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+<!-- 5: Market -->
+<section class="slide" data-screen-label="05 Market">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">05 / 09</div>
+  <div class="slide-meta">
+    <p class="slide-kicker">Screen 04 · Transfers</p>
+    <h2 class="slide-title">The <em>Market.</em></h2>
+    <p class="slide-desc">A dense but readable list of every Botola Pro player. Filter by position, sort by form / total / price / ownership. One tap opens the full profile.</p>
+    <div class="slide-features">
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label"><strong>Position chips</strong> · GK · DEF · MID · FWD</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Sort pivots · <strong>Total · Form · Price · Owned</strong></span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Crest + position chip on every row</span></div>
+    </div>
+  </div>
+  <div class="slide-phone-wrap"><div class="phone-frame"><div class="phone-screen"><iframe src="Botola Fantasy.html#transfers" data-route="transfers"></iframe></div></div></div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+<!-- 6: Player Profile -->
+<section class="slide" data-screen-label="06 Player">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">06 / 09</div>
+  <div class="slide-meta">
+    <p class="slide-kicker">Screen 05 · Player</p>
+    <h2 class="slide-title">Know your <em>player.</em></h2>
+    <p class="slide-desc">Tinted hero with club crest watermark, big stat block, 6-gameweek points history bars, and a colour-coded fixture difficulty rating for the next 5 weeks.</p>
+    <div class="slide-features">
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label"><strong>Total · Form · Price · Ownership</strong></span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Last 6 GW · bar chart · live GW highlighted</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Next 5 fixtures · <strong>green / amber / red</strong> difficulty</span></div>
+    </div>
+  </div>
+  <div class="slide-phone-wrap"><div class="phone-frame"><div class="phone-screen"><iframe src="Botola Fantasy.html#player" data-route="player"></iframe></div></div></div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+<!-- 7: Live -->
+<section class="slide" data-screen-label="07 Live">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">07 / 09</div>
+  <div class="slide-meta">
+    <p class="slide-kicker">Screen 06 · Matchday</p>
+    <h2 class="slide-title">Live, <em>in real time.</em></h2>
+    <p class="slide-desc">A pulsing magenta indicator marks the matchday. Track your players' live points as they unfold, switch tabs to see every fixture in the gameweek with the derby flagged.</p>
+    <div class="slide-features">
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Live progress bar · 78% of XI played</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Players-on-pitch get a pulsing dot</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label"><strong>🔥 DERBY tag</strong> on Wydad vs Raja</span></div>
+    </div>
+  </div>
+  <div class="slide-phone-wrap"><div class="phone-frame"><div class="phone-screen"><iframe src="Botola Fantasy.html#live" data-route="live"></iframe></div></div></div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+<!-- 8: Leagues + Standings -->
+<section class="slide" data-screen-label="08 Leagues">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">08 / 09</div>
+  <div class="slide-meta">
+    <p class="slide-kicker">Screen 07 · Social</p>
+    <h2 class="slide-title">Beat your <em>friends.</em></h2>
+    <p class="slide-desc">The fantasy game is more fun together. Private leagues for the office, public leagues for the country. Top-3 podium celebrates the leaders, the rest sits in a clean leaderboard with "you" highlighted.</p>
+    <div class="slide-features">
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Create or join · two clear primary actions</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label"><strong>Gold · silver · bronze</strong> podium</span></div>
+      <div class="slide-feature"><span class="feature-dot"></span><span class="feature-label">Your row glows lime in the standings</span></div>
+    </div>
+  </div>
+  <div class="slide-phone-wrap"><div class="phone-frame"><div class="phone-screen"><iframe src="Botola Fantasy.html#standings" data-route="standings"></iframe></div></div></div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+<!-- 9: System -->
+<section class="slide" data-screen-label="09 System">
+  <div class="slide-bg-grid"></div>
+  <div class="slide-counter">09 / 09</div>
+  <div style="position:relative; z-index:2; flex:1;">
+    <p class="slide-kicker">Design system</p>
+    <h2 class="slide-title">The <em>system.</em></h2>
+    <p class="slide-desc" style="max-width:1200px;">A small, opinionated language built for energy and clarity. Dark surfaces let club colours sing.</p>
+    <div style="display:grid; grid-template-columns: repeat(4, 1fr); gap: 24px; margin-top: 40px; max-width: 1100px;">
+      <div style="padding:24px; border-radius:20px; background:#10142A; border:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'JetBrains Mono'; font-size:12px; color:#6B7299; letter-spacing:2px; font-weight:600;">PRIMARY</div>
+        <div style="width:100%; height:80px; border-radius:12px; background:#00FF87; margin-top:12px;"></div>
+        <div style="font-family:'Space Grotesk'; font-size:18px; font-weight:700; color:#fff; margin-top:12px;">Lime · #00FF87</div>
+        <div style="font-family:'Inter'; font-size:13px; color:#A6ADD0; margin-top:4px;">Brand · CTAs · highlights</div>
+      </div>
+      <div style="padding:24px; border-radius:20px; background:#10142A; border:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'JetBrains Mono'; font-size:12px; color:#6B7299; letter-spacing:2px; font-weight:600;">SECONDARY</div>
+        <div style="width:100%; height:80px; border-radius:12px; background:#04F5FF; margin-top:12px;"></div>
+        <div style="font-family:'Space Grotesk'; font-size:18px; font-weight:700; color:#fff; margin-top:12px;">Cyan · #04F5FF</div>
+        <div style="font-family:'Inter'; font-size:13px; color:#A6ADD0; margin-top:4px;">Stats · transfers · data</div>
+      </div>
+      <div style="padding:24px; border-radius:20px; background:#10142A; border:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'JetBrains Mono'; font-size:12px; color:#6B7299; letter-spacing:2px; font-weight:600;">ACCENT</div>
+        <div style="width:100%; height:80px; border-radius:12px; background:#E90052; margin-top:12px;"></div>
+        <div style="font-family:'Space Grotesk'; font-size:18px; font-weight:700; color:#fff; margin-top:12px;">Magenta · #E90052</div>
+        <div style="font-family:'Inter'; font-size:13px; color:#A6ADD0; margin-top:4px;">Live · alerts · forwards</div>
+      </div>
+      <div style="padding:24px; border-radius:20px; background:#10142A; border:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'JetBrains Mono'; font-size:12px; color:#6B7299; letter-spacing:2px; font-weight:600;">WARM</div>
+        <div style="width:100%; height:80px; border-radius:12px; background:#FFB31A; margin-top:12px;"></div>
+        <div style="font-family:'Space Grotesk'; font-size:18px; font-weight:700; color:#fff; margin-top:12px;">Amber · #FFB31A</div>
+        <div style="font-family:'Inter'; font-size:13px; color:#A6ADD0; margin-top:4px;">Captain · derby · trophies</div>
+      </div>
+    </div>
+    <div style="display:grid; grid-template-columns: repeat(3, 1fr); gap:24px; margin-top:32px; max-width:1100px;">
+      <div style="padding:20px 24px; border-radius:16px; background:#10142A; border:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'Space Grotesk'; font-size:42px; font-weight:800; color:#fff; letter-spacing:-1.5px;">Space Grotesk</div>
+        <div style="font-family:'Inter'; font-size:14px; color:#A6ADD0; margin-top:6px;">Display · Headings · Stats</div>
+      </div>
+      <div style="padding:20px 24px; border-radius:16px; background:#10142A; border:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'Inter'; font-size:30px; font-weight:500; color:#fff;">Inter — body</div>
+        <div style="font-family:'Inter'; font-size:14px; color:#A6ADD0; margin-top:6px;">Body · paragraphs · captions</div>
+      </div>
+      <div style="padding:20px 24px; border-radius:16px; background:#10142A; border:1px solid rgba(255,255,255,0.08);">
+        <div style="font-family:'JetBrains Mono'; font-size:30px; font-weight:600; color:#fff;">JetBrains_Mono</div>
+        <div style="font-family:'Inter'; font-size:14px; color:#A6ADD0; margin-top:6px;">Numbers · kickers · labels</div>
+      </div>
+    </div>
+  </div>
+  <div class="slide-brand"><div class="brand-mark">BF</div>BOTOLA FANTASY</div>
+</section>
+
+</deck-stage>
+
+<script>
+// Sync each iframe's app to its data-route on load (since #hash isn't read by the React app),
+// using postMessage-style direct DOM manipulation via a small navigation hint.
+// The React app already ships with a Tweaks panel button list; we'll just rely on initial onboarding
+// and use the first iframe call to navigate via a global helper if available.
+window.addEventListener('load', () => {
+  document.querySelectorAll('iframe[data-route]').forEach(f => {
+    f.addEventListener('load', () => {
+      const route = f.dataset.route;
+      try {
+        // Best-effort: the React app's setRoute isn't exposed globally,
+        // so we navigate via a small URL trick — fall back to onboarding.
+        const win = f.contentWindow;
+        // Use the Tweaks panel button programmatically by finding it in the DOM.
+        setTimeout(() => {
+          try {
+            const btns = win.document.querySelectorAll('button');
+            const labels = { onboarding:'Onboarding', home:'Home', pick:'Pick Team', transfers:'Market', player:'Player', live:'Live', leagues:'Leagues', standings:'Standings' };
+            const target = labels[route];
+            if (!target) return;
+            btns.forEach(b => { if (b.textContent.trim() === target) b.click(); });
+          } catch(e) {}
+        }, 800);
+      } catch(e) {}
+    });
+  });
+});
+</script>
+</body>
+</html>
