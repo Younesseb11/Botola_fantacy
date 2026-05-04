@@ -1,113 +1,135 @@
 // screens-market.jsx — Player list / Transfers market + Player profile
 
-function MarketScreen({ onSelectPlayer }) {
-  const [pos, setPos] = React.useState('ALL');
-  const [sort, setSort] = React.useState('total');
-  const [q, setQ] = React.useState('');
-  const filtered = PLAYERS
-    .filter(p => pos === 'ALL' || p.pos === pos)
-    .filter(p => !q || p.n.toLowerCase().includes(q.toLowerCase()))
-    .sort((a, b) => sort === 'total' ? b.t - a.t : sort === 'form' ? b.f - a.f : sort === 'price' ? b.p - a.p : b.s - a.s);
+function MarketScreen() {
+  const [gw, setGw] = React.useState(window.GAMEWEEK?.id || window.CURRENT_GW);
+  const [fixtures, setFixtures] = React.useState([]);
+
+  React.useEffect(() => {
+    async function fetchFixtures() {
+      try {
+        const data = await window.sb('fixtures', `select=*&gameweek=eq.${gw}&order=match_date.asc`);
+        setFixtures(data || []);
+      } catch(e) {
+        setFixtures([]);
+      }
+    }
+    fetchFixtures();
+  }, [gw]);
 
   return (
-    <div style={{ position: 'absolute', inset: 0, overflow: 'auto', paddingBottom: 90 }}>
+    <div style={{ position: 'absolute', inset: 0, overflow: 'auto', paddingBottom: 100 }}>
       <AppBackground/>
-      <div style={{ position: 'relative', zIndex: 1 }}>
-        <div style={{ padding: '8px 20px 12px' }}>
-          <div style={{ fontFamily: T.mono, fontSize: 9.5, fontWeight: 700, letterSpacing: 1.5, color: T.cyan }}>TRANSFER MARKET</div>
-          <div style={{ fontFamily: T.display, fontSize: 22, fontWeight: 700, color: T.text, letterSpacing: -0.5, marginTop: 2 }}>{PLAYERS.length} players</div>
+      
+      <div style={{ position: 'relative', zIndex: 1, padding: '16px 20px 0' }}>
+        <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 20 }}>
+          <button onClick={() => setGw(g => Math.max(1, g - 1))} style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${T.border}`, borderRadius: 8, padding: 8, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36 }}>
+            <Icon name="chevron-l" color={T.text} />
+          </button>
+          <div style={{ fontFamily: T.display, fontSize: 20, fontWeight: 700, color: T.text }}>Gameweek {gw}</div>
+          <button onClick={() => setGw(g => Math.min(30, g + 1))} style={{ background: 'rgba(255,255,255,0.05)', border: `1px solid ${T.border}`, borderRadius: 8, padding: 8, cursor: 'pointer', display: 'flex', alignItems: 'center', justifyContent: 'center', width: 36, height: 36 }}>
+            <Icon name="chevron-r" color={T.text} />
+          </button>
         </div>
 
-        {/* Search */}
-        <div style={{ padding: '0 20px 10px' }}>
-          <div style={{
-            display: 'flex', alignItems: 'center', gap: 10, padding: '10px 14px',
-            background: T.surface, border: `1px solid ${T.border}`, borderRadius: 12,
-          }}>
-            <Icon name="search" size={16} color={T.textDim}/>
-            <input value={q} onChange={e => setQ(e.target.value)} placeholder="Search Botola Pro players…" style={{
-              flex: 1, background: 'none', border: 'none', outline: 'none',
-              fontFamily: T.font, fontSize: 14, color: T.text,
-            }}/>
-            <Icon name="filter" size={16} color={T.textDim}/>
-          </div>
-        </div>
+        {fixtures.length === 0 && <div style={{ color: T.textMute, textAlign: 'center', marginTop: 40, fontFamily: T.font }}>No fixtures scheduled</div>}
 
-        {/* Filters */}
-        <div style={{ padding: '0 20px 10px', display: 'flex', gap: 6, overflowX: 'auto' }}>
-          {['ALL', 'GK', 'DEF', 'MID', 'FWD'].map(x => (
-            <Pill key={x} active={pos === x} onClick={() => setPos(x)} color={x === 'ALL' ? T.text : posColor(x)}>{x}</Pill>
-          ))}
-          <div style={{ width: 1, background: T.border, margin: '4px 4px' }}/>
-          {[['total','Total'], ['form','Form'], ['price','Price'], ['s','Owned']].map(([k, l]) => (
-            <Pill key={k} active={sort === k} onClick={() => setSort(k)} color={T.cyan}>{l}</Pill>
-          ))}
-        </div>
-
-        {/* List */}
-        <div style={{ padding: '0 20px', display: 'flex', flexDirection: 'column', gap: 6 }}>
-          <div style={{ display: 'grid', gridTemplateColumns: '1fr 60px 60px 60px', padding: '0 12px', fontFamily: T.mono, fontSize: 9, color: T.textMute, fontWeight: 600, letterSpacing: 1, textTransform: 'uppercase', marginBottom: 4 }}>
-            <div>Player</div>
-            <div style={{ textAlign: 'right' }}>{sort === 'price' ? 'Price' : 'Form'}</div>
-            <div style={{ textAlign: 'right' }}>Total</div>
-            <div style={{ textAlign: 'right' }}>Own%</div>
-          </div>
-          {filtered.slice(0, 30).map(p => (
-            <MarketRow key={p.id} p={p} onClick={() => onSelectPlayer(p.id)} sort={sort}/>
-          ))}
+        <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+          {fixtures.map(f => {
+            const h = window.clubById(f.home_team_id);
+            const a = window.clubById(f.away_team_id);
+            const isLive = f.status === 'live' || f.status === 'in play';
+            const isFT = f.status === 'finished' || f.status === 'ft';
+            const time = f.match_date ? new Date(f.match_date).toLocaleTimeString('en-GB', { hour:'2-digit', minute:'2-digit' }) : 'TBD';
+            
+            return (
+              <div key={f.id} style={{ background: T.surface, border: `1px solid ${T.border}`, borderRadius: 16, padding: 16 }}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: 12 }}>
+                  <div style={{ fontFamily: T.mono, fontSize: 10, color: isLive ? T.red : T.textMute, fontWeight: 700, letterSpacing: 1 }}>{isLive ? 'LIVE' : isFT ? 'FT' : 'UPCOMING'}</div>
+                  <div style={{ fontFamily: T.mono, fontSize: 10, color: T.textDim }}>{f.match_date ? new Date(f.match_date).toLocaleDateString() : ''}</div>
+                </div>
+                
+                <div style={{ display: 'grid', gridTemplateColumns: '1fr auto 1fr', alignItems: 'center', gap: 12 }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                    <Crest club={h} size={44} />
+                    <div style={{ fontFamily: T.font, fontSize: 13, fontWeight: 600, color: T.text, textAlign: 'center' }}>{h?.short}</div>
+                  </div>
+                  
+                  <div style={{ textAlign: 'center', fontFamily: T.display, fontSize: 22, fontWeight: 800, color: T.text }}>
+                    {isFT || isLive ? `${f.home_score ?? '-'} - ${f.away_score ?? '-'}` : time}
+                  </div>
+                  
+                  <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', gap: 8 }}>
+                    <Crest club={a} size={44} />
+                    <div style={{ fontFamily: T.font, fontSize: 13, fontWeight: 600, color: T.text, textAlign: 'center' }}>{a?.short}</div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
         </div>
       </div>
     </div>
   );
 }
 
-function MarketRow({ p, onClick, sort }) {
-  const c = clubById(p.club);
-  return (
-    <button onClick={onClick} style={{
-      display: 'grid', gridTemplateColumns: '1fr 60px 60px 60px', alignItems: 'center', gap: 8,
-      padding: '10px 12px', background: T.surface, border: `1px solid ${T.border}`, borderRadius: T.rsm,
-      cursor: 'pointer', textAlign: 'left',
-    }}>
-      <div style={{ display: 'flex', alignItems: 'center', gap: 10, minWidth: 0 }}>
-        <Crest club={c} size={32}/>
-        <div style={{ minWidth: 0 }}>
-          <div style={{ fontFamily: T.display, fontSize: 13, fontWeight: 700, color: T.text, whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{p.n}</div>
-          <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginTop: 2 }}>
-            <PosChip pos={p.pos}/>
-            <div style={{ fontFamily: T.font, fontSize: 10.5, color: T.textDim }}>{c.short}</div>
-          </div>
-        </div>
-      </div>
-      <div style={{ textAlign: 'right', fontFamily: T.mono, fontSize: 13, fontWeight: 700, color: T.text }}>
-        {sort === 'price' ? p.p : p.f}
-      </div>
-      <div style={{ textAlign: 'right', fontFamily: T.mono, fontSize: 13, fontWeight: 700, color: T.primary }}>{p.t}</div>
-      <div style={{ textAlign: 'right', fontFamily: T.mono, fontSize: 11, fontWeight: 600, color: T.textDim }}>{p.s}%</div>
-    </button>
-  );
-}
-
 // ─── Player profile ───
 function PlayerProfile({ playerId, onBack }) {
+  const [history, setHistory] = React.useState([]);
+  const [upcoming, setUpcoming] = React.useState([]);
+  
   const p = PLAYERS.find(x => x.id === playerId);
+  
+  React.useEffect(() => {
+    if (!p) return;
+    
+    async function load() {
+      try {
+        // 1. History
+        const histData = await window.sb('player_live_points', `select=event_type,points,match_date,match_home_team,match_away_team&player_id=eq.${p.id}&order=match_date.desc`);
+        
+        // Aggregate by match_date for history
+        const dateGroups = {};
+        for (const h of (histData || [])) {
+          if (!dateGroups[h.match_date]) dateGroups[h.match_date] = { pts: 0, res: `${h.match_home_team} vs ${h.match_away_team}` };
+          dateGroups[h.match_date].pts += h.points;
+        }
+        
+        const hArr = Object.keys(dateGroups).map((d, i) => ({
+          gw: window.CURRENT_GW - i,
+          pts: dateGroups[d].pts,
+          res: dateGroups[d].res
+        }));
+        
+        setHistory(hArr.slice(0, 5));
+        
+        // 2. Upcoming
+        const upcomingData = await window.sb('fixtures', `select=*&or=(home_team_id.eq.${p.club},away_team_id.eq.${p.club})&status=eq.upcoming&order=match_date.asc&limit=5`);
+        
+        if (upcomingData) {
+          setUpcoming(upcomingData.map(f => {
+            const isHome = f.home_team_id === p.club;
+            const oppId = isHome ? f.away_team_id : f.home_team_id;
+            const opp = clubById(oppId);
+            return {
+              gw: f.gameweek || window.CURRENT_GW + 1,
+              opp: opp ? opp.short : oppId,
+              home: isHome,
+              diff: Math.floor(Math.random() * 5) + 1 // Stub for difficulty
+            };
+          }));
+        }
+      } catch (e) {
+        console.error('Failed to load profile data', e);
+      }
+    }
+    load();
+  }, [playerId, p]);
+
+  if (!p) return <div style={{ padding: 40, textAlign: 'center', color: T.textDim }}>Player not found</div>;
   const c = clubById(p.club);
-  const history = [
-    { gw: 9,  pts: 8,  res: 'W 2-0' },
-    { gw: 10, pts: 12, res: 'W 3-1' },
-    { gw: 11, pts: 6,  res: 'D 1-1' },
-    { gw: 12, pts: 14, res: 'W 4-0' },
-    { gw: 13, pts: 9,  res: 'W 2-1' },
-    { gw: 14, pts: p.gw, res: 'live' },
-  ];
-  const upcoming = [
-    { gw: 15, opp: 'rsb', home: true,  diff: 3 },
-    { gw: 16, opp: 'fus', home: false, diff: 2 },
-    { gw: 17, opp: 'mas', home: true,  diff: 2 },
-    { gw: 18, opp: 'rca', home: false, diff: 5 },
-    { gw: 19, opp: 'mat', home: true,  diff: 1 },
-  ];
-  const maxPts = Math.max(...history.map(h => h.pts));
+  if (!c) return null;
+  
+  const maxPts = history.length > 0 ? Math.max(...history.map(h => h.pts)) : 1;
 
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'auto', paddingBottom: 90 }}>

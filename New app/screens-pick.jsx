@@ -12,6 +12,51 @@ function PickTeamScreen({ tweaks, setTweak }) {
     setSelected(null);
   };
 
+  const handleFormationChange = (newFmt) => {
+    setSquad(s => {
+      const c = FORMATIONS[newFmt];
+      const allDef = [...(s.DEF||[]), ...(s.bench||[]).filter(id => PLAYERS.find(p => p.id === id)?.pos === 'DEF')];
+      const allMid = [...(s.MID||[]), ...(s.bench||[]).filter(id => PLAYERS.find(p => p.id === id)?.pos === 'MID')];
+      const allFwd = [...(s.FWD||[]), ...(s.bench||[]).filter(id => PLAYERS.find(p => p.id === id)?.pos === 'FWD')];
+      const allGk = [...(s.GK||[]), ...(s.bench||[]).filter(id => PLAYERS.find(p => p.id === id)?.pos === 'GK')];
+
+      const nDef = allDef.slice(0, c.DEF);
+      const nMid = allMid.slice(0, c.MID);
+      const nFwd = allFwd.slice(0, c.FWD);
+      const nGk = allGk.slice(0, 1);
+
+      const newBench = [
+        ...allGk.slice(1),
+        ...allDef.slice(c.DEF),
+        ...allMid.slice(c.MID),
+        ...allFwd.slice(c.FWD)
+      ];
+
+      return {
+        ...s,
+        formation: newFmt,
+        GK: nGk,
+        DEF: nDef,
+        MID: nMid,
+        FWD: nFwd,
+        bench: newBench
+      };
+    });
+    setShowFormations(false);
+  };
+
+  const gw = window.GAMEWEEK?.id || window.CURRENT_GW;
+  const deadlineStr = window.GAMEWEEK?.deadline 
+    ? new Date(window.GAMEWEEK.deadline).toLocaleTimeString('en-GB', {hour: '2-digit', minute: '2-digit'})
+    : '—';
+    
+  // Calculate squad value dynamically
+  const allIds = [...(squad.GK||[]), ...(squad.DEF||[]), ...(squad.MID||[]), ...(squad.FWD||[]), ...(squad.bench||[])];
+  const squadValue = allIds.reduce((sum, id) => {
+    const p = PLAYERS.find(x => x.id === id);
+    return sum + (p ? p.p : 0);
+  }, 0).toFixed(1);
+
   return (
     <div style={{ position: 'absolute', inset: 0, overflow: 'hidden' }}>
       <AppBackground />
@@ -19,7 +64,7 @@ function PickTeamScreen({ tweaks, setTweak }) {
         {/* Header */}
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '8px 20px 12px' }}>
           <div>
-            <div style={{ fontFamily: T.mono, fontSize: 9.5, fontWeight: 700, letterSpacing: 1.5, color: T.primary }}>GW 14 · DEADLINE 06:32:18</div>
+            <div style={{ fontFamily: T.mono, fontSize: 9.5, fontWeight: 700, letterSpacing: 1.5, color: T.primary }}>GW {gw} · DEADLINE {deadlineStr}</div>
             <div style={{ fontFamily: T.display, fontSize: 22, fontWeight: 700, color: T.text, letterSpacing: -0.5, marginTop: 2 }}>Pick Team</div>
           </div>
           <div style={{ display: 'flex', gap: 8 }}>
@@ -34,11 +79,11 @@ function PickTeamScreen({ tweaks, setTweak }) {
             display: 'flex', alignItems: 'center', gap: 10, padding: 12,
             background: T.surface, border: `1px solid ${T.border}`, borderRadius: T.rmd,
           }}>
-            <BudgetItem label="Squad" val="100.0" max="100.0" />
+            <BudgetItem label="Squad" val={squadValue} max="100.0" />
             <Sep />
-            <BudgetItem label="Bank" val="0.5" />
+            <BudgetItem label="Bank" val={(window.USER_SQUAD_INFO?.bank || 0).toFixed(1)} />
             <Sep />
-            <BudgetItem label="Free Tx" val="2" />
+            <BudgetItem label="Free Tx" val={window.USER_SQUAD_INFO?.freeTx || 0} />
             <Sep />
             <BudgetItem label="Form" val={squad.formation} accent={T.cyan} />
           </div>
@@ -80,7 +125,7 @@ function PickTeamScreen({ tweaks, setTweak }) {
         {showFormations && (
           <FormationSheet
             current={squad.formation}
-            onPick={(f) => { setSquad(s => ({...s, formation: f})); setShowFormations(false); }}
+            onPick={handleFormationChange}
             onClose={() => setShowFormations(false)}
           />
         )}
@@ -189,7 +234,9 @@ function PitchLines() {
 }
 
 function PitchPlayer({ p, isCap, isVice, isSel, onClick, compact }) {
+  if (!p) return null;
   const c = clubById(p.club);
+  if (!c) return null;
   return (
     <button onClick={onClick} style={{
       background: 'none', border: 'none', cursor: 'pointer', padding: 0,
@@ -343,7 +390,9 @@ function PitchList({ squad, selected, setSelected }) {
 }
 
 function PlayerListRow({ p, isCap, isVice, bench, onClick }) {
+  if (!p) return null;
   const c = clubById(p.club);
+  if (!c) return null;
   return (
     <button onClick={onClick} style={{
       width: '100%', display: 'flex', alignItems: 'center', gap: 12, padding: '10px 12px',
@@ -396,7 +445,9 @@ function Bench({ squad, selected, setSelected }) {
 // ─── Action sheet ───
 function PlayerActionSheet({ squad, selection, onClose, onCaptain, onVice }) {
   const p = PLAYERS.find(x => x.id === selection.id);
+  if (!p) return null;
   const c = clubById(p.club);
+  if (!c) return null;
   const isCap = squad.captain === p.id;
   return (
     <Sheet onClose={onClose}>

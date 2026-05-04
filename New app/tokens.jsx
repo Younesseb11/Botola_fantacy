@@ -60,12 +60,18 @@ function Crest({ club, size = 36, ring = false }) {
       boxShadow: ring ? `0 0 0 2px rgba(255,255,255,0.18), 0 6px 14px -4px ${c.crestBg}80` : '0 2px 6px rgba(0,0,0,0.4)',
       flexShrink: 0, position: 'relative', overflow: 'hidden',
     }}>
-      <div style={{
-        position: 'absolute', inset: 0,
-        background: 'linear-gradient(180deg, rgba(255,255,255,0.18), transparent 50%)',
-        pointerEvents: 'none',
-      }} />
-      <span style={{ position: 'relative', zIndex: 1 }}>{c.glyph}</span>
+      {c.logo_url ? (
+        <img src={c.logo_url} alt={c.short} style={{ width: '80%', height: '80%', objectFit: 'contain', position: 'relative', zIndex: 1 }} />
+      ) : (
+        <>
+          <div style={{
+            position: 'absolute', inset: 0,
+            background: 'linear-gradient(180deg, rgba(255,255,255,0.18), transparent 50%)',
+            pointerEvents: 'none',
+          }} />
+          <span style={{ position: 'relative', zIndex: 1 }}>{c.glyph}</span>
+        </>
+      )}
     </div>
   );
 }
@@ -147,7 +153,7 @@ function TabBar({ active, onChange, tweaks }) {
   const tabs = [
     { id: 'home',     label: 'Home',     icon: 'home' },
     { id: 'pick',     label: 'Pick Team',icon: 'pitch' },
-    { id: 'transfers',label: 'Market',   icon: 'swap' },
+    { id: 'transfers',label: 'Fixtures',   icon: 'swap' },
     { id: 'live',     label: 'Live',     icon: 'live' },
     { id: 'leagues',  label: 'Leagues',  icon: 'cup' },
   ];
